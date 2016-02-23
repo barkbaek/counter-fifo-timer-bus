@@ -116,4 +116,120 @@
 <br>
 
 ### 3. Project 소개 <br>
-#####  <br>
+#####  3-1. Project 구현
+###### FIFO, TIMER, BUS를 연결하여 동작하는 		 COUNTER를 설계한다.
+<br>
+##### 3-2. 목적
+###### - 과제에서 주어진 specification을 충분히 이해하고 과제를 수행한다.
+###### - State Transition을 구성하고 FSM 설계 능력을 향상한다.
+###### - testbench에서 Invalid한 입력이 주어졌을 때 어떻게 대처해야 효율적으로 작동할 수 있을지 여러 대처방안을 고안해보고 예외처리에 대한 생각을 넒힘으로써 회로 구현 능력을 향상시킨다.
+<br>
+<br>
+<br>
+### 4. 일정 및 계획 <br>
+##### 4-1. Project 구현 일정 및 계획
+###### - 1. Schedule 참고
+###### - Project 제안서에서 계획했던 일정과 조금의 변화가 있어 다시 수정하였다. 2011년 11월 2일부터 2011년 11월 12일까지 주어진 specification을 제대로 이해하고 계획을 세웠다.
+###### - 2011년 11월 13일부터 2011년 11월 16일까지 FIFO, FIFO-TOP, BUS, TIMER에 관한 State Transition Diagram을 작성하였고 각 module에 관한 상세 spec을 설계하였다.
+###### - 2011년 11월 17일부터 2011년 11월 22일까지 각각의 module을 Verilog code로 구현하였다.
+###### - 2011년 11월 23일부터 2011년 12월 3일까지 구현한 Verilog code를 검증하였다. 2011년 11월 29일에 첫 번째 예비 검증을 수행하였고 2011년 12월 3일 두 번째 예비 검증을 수행하였다.
+###### - 2011년 12월 4일부터 2011년 12월 4일부터 2011년 12월 6일까지 최종 결과보고서를 작성하였다.
+<br>
+<br>
+<br>
+### 5. Project Specification <br>
+##### 5-1. Synchronous fifo
+###### - 표 2-1. Input/Output Description (Synchronous FIFO) 참고
+<br>
+##### 5-1-1. Introduction
+###### - Synchronous FIFO 는 First-In-First-Out memory queue로 내부에 read와 write에 관한 pointer를 관리하는 control logic이 있어 	  status flags를 생성하고 user logic과 interface하기 위한 handshake signal을 제공한다.
+<br>
+##### 5-1-2. Features
+###### - Data width가 8bits인 8개의 data를 저장할 수 있는 memory depth를 가진다.
+###### - Status flag로 full과 empty를 제공한다.
+###### - Handshake signal인 wr_ack, wr_err, rd_ack, rd_err를 통해 write와 read 요청에 관한 feedback을 제공한다.
+###### - data_count를 통해 fifo안에 있는 현재 data 수를 확인할 수 있다.
+<br>
+##### 5-1-3. Functional Description
+###### - write-enable input(wr-en)이 1이면, clock의 rising edge에서 다음에 이용할 수 있는 memory의 빈 공간에 쓰여지며 Memory full status output(full)은 module 내부 memory에 더 이상 빈 공간이 없음을 나타낸다.
+###### - Synchronous fifo에 저장된 data는 clock의 rising edge에서 read-enable input(rd_en)이 1이면 쓰여진 순서대로 output port인 dout을 통해 빠져나간다. Memory empty status output(empty)의 값이 1이면 내부 memory에 더 이상 data가 존재하지 않음을 나타낸다.
+###### - fifo는 invalid request에 의해 손상되어서는 안된다. empty flag의 상태가 활성화 되어있거나 full flag가 활성화 되었을 때 각각 read operation과 write operation을 요청할 때 fifo에 어떠한 영향도 미쳐서는 안된다. Handshake signal인 read error output(rd_err)과 write error output(wr_err)은 이러한 invalid request의 error가 발생했음을 알려준다.
+<br>
+##### 5-1-4. Behaviors of status signals
+###### - Active low에 동작하는 reset_n은 내부 포인터를 재설정한다. (empty status output은 1로 하고, full status output은 0으로 초기화한다. reset_n을 통해 fifo에 저장되어 있지만 read되지 않은 data를 버림으로써 효과적으로 fifo 내부를 비울 수 있게 해준다.)
+###### - Write acknowledge output(wr_ack)는 요청된 write 신호에 대해 승인함을 알려준다. (fifo 상태가 full 이 아닐 때.)
+###### - Write error output(wr_err)는 요청된 write 신호에 대해 거부함을 알려준다. (fifo의 상태가 full일 때.)
+###### - Read acknowledge output(rd_ack)는 요청된 read 신호에 대해 승인함을 알려준다. (fifo의 상태가 empty가 아닐 때.)
+###### - Read error output(rd_err)는 요청된 read 신호에 대해 거부함을 알려준다. (fifo의 상태가 empty일 때.)
+###### - write가 요청되면 read 요청은 될 수 없고, read가 요청되면 write가 요청될 수 없다.
+###### - write와 read가 둘 다 요청 되지 않을 경우 비활성화 된다.
+<br>
+##### 5-1-5. Additional Information
+###### - FIFO에서 read enable signal(rd_en)이 1이 되는 경우, output port인 dout으로 0을 보낸다.
+<br>
+<br>
+<br>
+##### 5-2. fifo-top
+###### - 표 2-2. Input/Output Description (FIFO-TOP) 참고.
+<br>
+##### 5-2-1. Introduction
+###### - 내부에 synchronous FIFO 4개를 instance한 component이다. 외부로부터 해당 component가 선택되었을 경우 입력된 address signal과 write/read signal을 해독하여 4개 중 하나의 FIFO를 선택하여 read/write를 수행한다.
+<br>
+##### 5-2-2. Features
+###### - Select signal(sel)이 1일 때 작동한다.
+###### - Write/Read signal(wr)이 1이면 write operation을 처리하고 0이면 read operation을 처리한다.
+###### - 각각의 Synchronous FIFO의 주소는 8bits이며 Address signal은 이 fifo를 선택하기 위해 사용된다. 이중 상위 4bits는 사용하지 않고 하위 4bits를 offset으로 사용하여 4개의 fifo 중 하나를 선택한다.
+###### - Data in signal(din) 은 bus를 통해 입력된 data로 4개 fifo의 data in과 연결되고, Data out signal(dout)은 4개의 FIFO 중 선택된 FIFO의 dout을 결과로 연결한다.
+###### - 4개의 FIFO 중 선택된 FIFO의 handshake signal, status flag, count vector를 연결하여 출력한다.
+<br>
+##### 5-2-3. Functional Description
+###### - 4개의 FIFO는 offset이 각각 0x1, 0x2, 0x3, 0x4이며 그 외의 값일 경우에는 아무 일도 수행하지 않는다. (Synchronous FIFO 각각의 offset은 8'h11, 8'h12, 8'h13, 8'h14이다.)
+###### - Select signal(sel)이 1일 때, wr_en이 1이면 data_in input(din)이 FIFO에 쓰여지도록 요청된 것이고 read enable signal(rd_en)이 1이면 FIFO에 저장되어 있는 값을 읽도록 요청된 것이다. 4개의 FIFO중 하나가 선택되었을 때 해당 FIFO에서 나오는 status flag, handshake signal, count vector 값을 FIFO TOP의 FIFO flag output(fifo_flag)와 FIFO count value(fifo_cnt)를 통해 출력된다. FIFO flag output(fifo_flag)은 6bits 값을 가지는데 각각의 비트는 최상위부터 순서대로 full, empty, write acknowledge(wr_ack), write error(wr_err), read acknowledge(rd_ack), read error(rd_err)를 나타낸다. 4개 중 아무것도 선택되지 않았을 경우 FIFO flag output(fifo_flag)과 FIFO count value(fifo_cnt)는 모두 0을 출력한다.
+<br>
+##### 5-2-4. Additional Information
+###### 
+###### 
+<br>
+<br>
+##### 5-3. timer
+###### 
+<br>
+##### 5-3-1. Introduction
+###### 
+<br>
+##### 5-3-2. Features
+###### 
+###### 
+###### 
+###### 
+###### 
+###### 
+###### 
+###### 
+###### 
+###### 
+<br>
+##### 5-3-3. Functional Description
+###### 
+###### 
+###### 
+<br>
+##### 5-3-4. Register Description
+###### 
+###### 
+<br>
+##### 5-3-5. Additional Information
+######
+######
+######
+######
+######
+######
+######
+######
+######
+######
+######
+
+
+

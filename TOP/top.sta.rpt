@@ -1,0 +1,1339 @@
+TimeQuest Timing Analyzer report for top
+Wed Dec 07 15:12:46 2011
+Quartus II Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Slow Model Setup: 'clk'
+ 12. Slow Model Hold: 'clk'
+ 13. Slow Model Minimum Pulse Width: 'clk'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
+ 18. Fast Model Setup Summary
+ 19. Fast Model Hold Summary
+ 20. Fast Model Recovery Summary
+ 21. Fast Model Removal Summary
+ 22. Fast Model Minimum Pulse Width Summary
+ 23. Fast Model Setup: 'clk'
+ 24. Fast Model Hold: 'clk'
+ 25. Fast Model Minimum Pulse Width: 'clk'
+ 26. Setup Times
+ 27. Hold Times
+ 28. Clock to Output Times
+ 29. Minimum Clock to Output Times
+ 30. Multicorner Timing Analysis Summary
+ 31. Setup Times
+ 32. Hold Times
+ 33. Clock to Output Times
+ 34. Minimum Clock to Output Times
+ 35. Setup Transfers
+ 36. Hold Transfers
+ 37. Report TCCS
+ 38. Report RSKM
+ 39. Unconstrained Paths
+ 40. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2011 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                                    ;
++--------------------+-----------------------------------------------------------------+
+; Quartus II Version ; Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Web Edition ;
+; Revision Name      ; top                                                             ;
+; Device Family      ; Cyclone II                                                      ;
+; Device Name        ; EP2C70F896C6                                                    ;
+; Timing Models      ; Final                                                           ;
+; Delay Model        ; Combined                                                        ;
+; Rise/Fall Delays   ; Unavailable                                                     ;
++--------------------+-----------------------------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 2      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                          ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+
+
++--------------------------------------------------+
+; Slow Model Fmax Summary                          ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 129.84 MHz ; 129.84 MHz      ; clk        ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++--------------------------------+
+; Slow Model Setup Summary       ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -6.702 ; -2258.206     ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Slow Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 0.391 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clk   ; -1.380 ; -410.380              ;
++-------+--------+-----------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'clk'                                                                                                                                                                                               ;
++--------+-------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                                   ; To Node                                                                  ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -6.702 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[0]                          ; clk          ; clk         ; 1.000        ; 0.000      ; 7.738      ;
+; -6.686 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 1.000        ; 0.011      ; 7.733      ;
+; -6.654 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[7]                          ; clk          ; clk         ; 1.000        ; -0.013     ; 7.677      ;
+; -6.647 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[3]                          ; clk          ; clk         ; 1.000        ; -0.001     ; 7.682      ;
+; -6.599 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 1.000        ; 0.011      ; 7.646      ;
+; -6.588 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[2] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.646      ;
+; -6.588 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[1] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.646      ;
+; -6.588 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[3] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.646      ;
+; -6.588 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[4] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.646      ;
+; -6.588 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[0] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.646      ;
+; -6.588 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[6] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.646      ;
+; -6.588 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[5] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.646      ;
+; -6.583 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 1.000        ; 0.012      ; 7.631      ;
+; -6.564 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 1.000        ; 0.011      ; 7.611      ;
+; -6.555 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ; clk          ; clk         ; 1.000        ; 0.045      ; 7.636      ;
+; -6.538 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[2] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.596      ;
+; -6.538 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[1] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.596      ;
+; -6.538 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[3] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.596      ;
+; -6.538 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[4] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.596      ;
+; -6.538 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[0] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.596      ;
+; -6.538 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[6] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.596      ;
+; -6.538 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[5] ; clk          ; clk         ; 1.000        ; 0.022      ; 7.596      ;
+; -6.523 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[2] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.588      ;
+; -6.523 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[1] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.588      ;
+; -6.523 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[3] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.588      ;
+; -6.523 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[4] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.588      ;
+; -6.523 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[0] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.588      ;
+; -6.523 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[7] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.588      ;
+; -6.523 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[6] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.588      ;
+; -6.523 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[5] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.588      ;
+; -6.518 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[2] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.583      ;
+; -6.518 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[1] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.583      ;
+; -6.518 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[3] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.583      ;
+; -6.518 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[4] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.583      ;
+; -6.518 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[0] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.583      ;
+; -6.518 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[7] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.583      ;
+; -6.518 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[6] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.583      ;
+; -6.518 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[5] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.583      ;
+; -6.512 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[2] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.577      ;
+; -6.512 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[1] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.577      ;
+; -6.512 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[3] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.577      ;
+; -6.512 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[4] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.577      ;
+; -6.512 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[0] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.577      ;
+; -6.512 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[7] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.577      ;
+; -6.512 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[6] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.577      ;
+; -6.512 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[5] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.577      ;
+; -6.484 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ; clk          ; clk         ; 1.000        ; 0.045      ; 7.565      ;
+; -6.484 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[4] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.549      ;
+; -6.484 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[7] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.549      ;
+; -6.484 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[6] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.549      ;
+; -6.484 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[5] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.549      ;
+; -6.473 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[2] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.538      ;
+; -6.473 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[1] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.538      ;
+; -6.473 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[3] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.538      ;
+; -6.473 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[4] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.538      ;
+; -6.473 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[0] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.538      ;
+; -6.473 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[7] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.538      ;
+; -6.473 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[6] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.538      ;
+; -6.473 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[5] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.538      ;
+; -6.468 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ; clk          ; clk         ; 1.000        ; 0.045      ; 7.549      ;
+; -6.468 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[2] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.533      ;
+; -6.468 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[1] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.533      ;
+; -6.468 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[3] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.533      ;
+; -6.468 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[4] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.533      ;
+; -6.468 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[0] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.533      ;
+; -6.468 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[7] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.533      ;
+; -6.468 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[6] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.533      ;
+; -6.468 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[5] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.533      ;
+; -6.466 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[2]                          ; clk          ; clk         ; 1.000        ; 0.000      ; 7.502      ;
+; -6.462 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[2] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.527      ;
+; -6.462 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[1] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.527      ;
+; -6.462 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[3] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.527      ;
+; -6.462 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[4] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.527      ;
+; -6.462 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[0] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.527      ;
+; -6.462 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[7] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.527      ;
+; -6.462 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[6] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.527      ;
+; -6.462 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[5] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.527      ;
+; -6.452 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[4]                          ; clk          ; clk         ; 1.000        ; -0.001     ; 7.487      ;
+; -6.452 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ; clk          ; clk         ; 1.000        ; 0.045      ; 7.533      ;
+; -6.452 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ; clk          ; clk         ; 1.000        ; 0.046      ; 7.534      ;
+; -6.450 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[0]                          ; clk          ; clk         ; 1.000        ; 0.000      ; 7.486      ;
+; -6.435 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]       ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[0]                          ; clk          ; clk         ; 1.000        ; 0.001      ; 7.472      ;
+; -6.434 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[4] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.499      ;
+; -6.434 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[7] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.499      ;
+; -6.434 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[6] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.499      ;
+; -6.434 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[5] ; clk          ; clk         ; 1.000        ; 0.029      ; 7.499      ;
+; -6.433 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ; clk          ; clk         ; 1.000        ; 0.045      ; 7.514      ;
+; -6.424 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[1]                          ; clk          ; clk         ; 1.000        ; -0.001     ; 7.459      ;
+; -6.402 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[7]                          ; clk          ; clk         ; 1.000        ; -0.013     ; 7.425      ;
+; -6.397 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ; clk          ; clk         ; 1.000        ; 0.045      ; 7.478      ;
+; -6.395 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[3]                          ; clk          ; clk         ; 1.000        ; -0.001     ; 7.430      ;
+; -6.388 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[3]                                ; clk          ; clk         ; 1.000        ; 0.011      ; 7.435      ;
+; -6.387 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]       ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[7]                          ; clk          ; clk         ; 1.000        ; -0.012     ; 7.411      ;
+; -6.381 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ; clk          ; clk         ; 1.000        ; 0.046      ; 7.463      ;
+; -6.380 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]       ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[3]                          ; clk          ; clk         ; 1.000        ; 0.000      ; 7.416      ;
+; -6.365 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ; clk          ; clk         ; 1.000        ; 0.045      ; 7.446      ;
+; -6.362 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ; clk          ; clk         ; 1.000        ; 0.045      ; 7.443      ;
+; -6.358 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[4]                                ; clk          ; clk         ; 1.000        ; 0.045      ; 7.439      ;
+; -6.357 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[7] ; clk          ; clk         ; 1.000        ; 0.001      ; 7.394      ;
+; -6.349 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ; clk          ; clk         ; 1.000        ; 0.046      ; 7.431      ;
++--------+-------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'clk'                                                                                                                                                                                                            ;
++-------+--------------------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                                ; To Node                                                                  ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+--------------------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.391 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1]              ; timer:U2_timer|timer_master:U1_timer_master|master_state[1]              ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]                    ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[3]                    ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[3]                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; timer:U2_timer|timer_master:U1_timer_master|master_state[2]              ; timer:U2_timer|timer_master:U1_timer_master|master_state[2]              ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[0]                ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[0]                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[7]                ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[7]                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[6]                ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[6]                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[5]                ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[5]                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[1]                          ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[0]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U1_fifo|data_count[1]                          ; fifo_top:U1_fifo_top|fifo:U1_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U1_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U1_fifo|data_count[0]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U3_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|head[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U3_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[1]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[2]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[1]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[0]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[1]                          ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U0_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|tail[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U0_fifo|tail[2]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[0]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[1]                          ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[1]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[2]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.391 ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.657      ;
+; 0.535 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.801      ;
+; 0.552 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.818      ;
+; 0.552 ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.818      ;
+; 0.553 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.819      ;
+; 0.553 ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.819      ;
+; 0.666 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_READ_ERR_STATE         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.932      ;
+; 0.685 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_READ_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.951      ;
+; 0.724 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_FULL_STATE             ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.001      ; 0.991      ;
+; 0.754 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.020      ;
+; 0.775 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_READ_ERR_STATE         ; clk          ; clk         ; 0.000        ; -0.001     ; 1.040      ;
+; 0.781 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[1] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.047      ;
+; 0.785 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[5] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[5]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.051      ;
+; 0.786 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[2] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.052      ;
+; 0.791 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg3[0] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.057      ;
+; 0.792 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[4] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[4]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.058      ;
+; 0.793 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[3]                    ; fifo_top:U1_fifo_top|next_address[3]                                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.059      ;
+; 0.794 ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 1.060      ;
+; 0.795 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.061      ;
+; 0.796 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg3[3] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[3]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.062      ;
+; 0.802 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.068      ;
+; 0.803 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.069      ;
+; 0.808 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1]              ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; clk          ; clk         ; 0.000        ; 0.000      ; 1.074      ;
+; 0.808 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_FULL_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 1.074      ;
+; 0.815 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.081      ;
+; 0.816 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.082      ;
+; 0.819 ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.085      ;
+; 0.835 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.101      ;
+; 0.837 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[1]                    ; fifo_top:U1_fifo_top|next_address[1]                                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.103      ;
+; 0.847 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.113      ;
+; 0.860 ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_FULL_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 1.126      ;
+; 0.862 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 1.128      ;
+; 0.873 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.139      ;
+; 0.876 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_ERR_STATE         ; clk          ; clk         ; 0.000        ; 0.000      ; 1.142      ;
+; 0.900 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; fifo_top:U1_fifo_top|next_address[3]                                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.166      ;
+; 0.912 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; fifo_top:U1_fifo_top|next_address[1]                                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.178      ;
+; 0.913 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[6] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.179      ;
+; 0.914 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[7] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.180      ;
+; 0.946 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ; clk          ; clk         ; 0.000        ; 0.000      ; 1.212      ;
+; 0.959 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[3]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.225      ;
+; 0.960 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.226      ;
+; 0.963 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[6]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.229      ;
+; 0.965 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[5]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.231      ;
+; 0.967 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg3[6] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.233      ;
+; 0.971 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg3[7] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.237      ;
+; 0.977 ; fifo_top:U1_fifo_top|fifo:U1_fifo|register_file:U0_register_file|reg1[0] ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.243      ;
+; 0.979 ; fifo_top:U1_fifo_top|fifo:U1_fifo|register_file:U0_register_file|reg1[1] ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.245      ;
+; 0.981 ; fifo_top:U1_fifo_top|fifo:U1_fifo|register_file:U0_register_file|reg1[3] ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[3]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.247      ;
+; 0.989 ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_READ_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.255      ;
+; 0.993 ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.259      ;
+; 1.003 ; fifo_top:U1_fifo_top|fifo:U1_fifo|register_file:U0_register_file|reg1[7] ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[7]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.269      ;
+; 1.008 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[4]                ; timer:U2_timer|timer_counter:U2_timer_counter|COUNT_VALUE[4]             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.274      ;
+; 1.019 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.285      ;
+; 1.021 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.287      ;
+; 1.039 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg2[5] ; clk          ; clk         ; 0.000        ; 0.012      ; 1.317      ;
+; 1.039 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[3]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.305      ;
+; 1.043 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; -0.001     ; 1.308      ;
+; 1.047 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_EMPTY_STATE            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.313      ;
++-------+--------------------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'clk'                                                                                                                     ;
++--------+--------------+----------------+------------------+-------+------------+--------------------------------------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                                                                   ;
++--------+--------------+----------------+------------------+-------+------------+--------------------------------------------------------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; clk   ; Rise       ; clk                                                                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; bus:U0_bus|bus_mx_S2                                                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; bus:U0_bus|bus_mx_S2                                                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|cur_sel                                             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|cur_sel                                             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[0]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[0]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[1]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[1]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[2]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[2]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[3]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[3]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[2]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[2]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[3]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[3]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[4]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[4]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[5]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[5]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_EMPTY_STATE            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_EMPTY_STATE            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_NOP_STATE              ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_NOP_STATE              ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_ERR_STATE         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_ERR_STATE         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_STATE            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_STATE            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[3] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[4] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[4] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[5] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[5] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[6] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[6] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[7] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[7] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[3] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[4] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[4] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[5] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[5] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[6] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[6] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[7] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[7] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[3] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[4] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[4] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[5] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[5] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[6] ;
++--------+--------------+----------------+------------------+-------+------------+--------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Setup Times                                                                  ;
++----------------+------------+--------+--------+------------+-----------------+
+; Data Port      ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++----------------+------------+--------+--------+------------+-----------------+
+; M0_address[*]  ; clk        ; 10.099 ; 10.099 ; Rise       ; clk             ;
+;  M0_address[0] ; clk        ; 9.728  ; 9.728  ; Rise       ; clk             ;
+;  M0_address[1] ; clk        ; 9.638  ; 9.638  ; Rise       ; clk             ;
+;  M0_address[2] ; clk        ; 6.113  ; 6.113  ; Rise       ; clk             ;
+;  M0_address[3] ; clk        ; 9.668  ; 9.668  ; Rise       ; clk             ;
+;  M0_address[4] ; clk        ; 9.448  ; 9.448  ; Rise       ; clk             ;
+;  M0_address[5] ; clk        ; 10.099 ; 10.099 ; Rise       ; clk             ;
+;  M0_address[6] ; clk        ; 8.524  ; 8.524  ; Rise       ; clk             ;
+;  M0_address[7] ; clk        ; 9.108  ; 9.108  ; Rise       ; clk             ;
+; M0_dout[*]     ; clk        ; 8.208  ; 8.208  ; Rise       ; clk             ;
+;  M0_dout[0]    ; clk        ; 6.569  ; 6.569  ; Rise       ; clk             ;
+;  M0_dout[1]    ; clk        ; 7.714  ; 7.714  ; Rise       ; clk             ;
+;  M0_dout[2]    ; clk        ; 7.155  ; 7.155  ; Rise       ; clk             ;
+;  M0_dout[3]    ; clk        ; 7.704  ; 7.704  ; Rise       ; clk             ;
+;  M0_dout[4]    ; clk        ; 6.921  ; 6.921  ; Rise       ; clk             ;
+;  M0_dout[5]    ; clk        ; 8.208  ; 8.208  ; Rise       ; clk             ;
+;  M0_dout[6]    ; clk        ; 7.359  ; 7.359  ; Rise       ; clk             ;
+;  M0_dout[7]    ; clk        ; 7.836  ; 7.836  ; Rise       ; clk             ;
+; M0_req         ; clk        ; -0.035 ; -0.035 ; Rise       ; clk             ;
+; M0_wr          ; clk        ; 9.844  ; 9.844  ; Rise       ; clk             ;
+; reset_n        ; clk        ; 6.406  ; 6.406  ; Rise       ; clk             ;
++----------------+------------+--------+--------+------------+-----------------+
+
+
++------------------------------------------------------------------------------+
+; Hold Times                                                                   ;
++----------------+------------+--------+--------+------------+-----------------+
+; Data Port      ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++----------------+------------+--------+--------+------------+-----------------+
+; M0_address[*]  ; clk        ; -1.004 ; -1.004 ; Rise       ; clk             ;
+;  M0_address[0] ; clk        ; -4.532 ; -4.532 ; Rise       ; clk             ;
+;  M0_address[1] ; clk        ; -3.740 ; -3.740 ; Rise       ; clk             ;
+;  M0_address[2] ; clk        ; -1.004 ; -1.004 ; Rise       ; clk             ;
+;  M0_address[3] ; clk        ; -3.823 ; -3.823 ; Rise       ; clk             ;
+;  M0_address[4] ; clk        ; -4.670 ; -4.670 ; Rise       ; clk             ;
+;  M0_address[5] ; clk        ; -4.687 ; -4.687 ; Rise       ; clk             ;
+;  M0_address[6] ; clk        ; -3.667 ; -3.667 ; Rise       ; clk             ;
+;  M0_address[7] ; clk        ; -4.251 ; -4.251 ; Rise       ; clk             ;
+; M0_dout[*]     ; clk        ; -3.387 ; -3.387 ; Rise       ; clk             ;
+;  M0_dout[0]    ; clk        ; -3.576 ; -3.576 ; Rise       ; clk             ;
+;  M0_dout[1]    ; clk        ; -3.761 ; -3.761 ; Rise       ; clk             ;
+;  M0_dout[2]    ; clk        ; -3.387 ; -3.387 ; Rise       ; clk             ;
+;  M0_dout[3]    ; clk        ; -3.991 ; -3.991 ; Rise       ; clk             ;
+;  M0_dout[4]    ; clk        ; -3.826 ; -3.826 ; Rise       ; clk             ;
+;  M0_dout[5]    ; clk        ; -4.254 ; -4.254 ; Rise       ; clk             ;
+;  M0_dout[6]    ; clk        ; -3.486 ; -3.486 ; Rise       ; clk             ;
+;  M0_dout[7]    ; clk        ; -4.332 ; -4.332 ; Rise       ; clk             ;
+; M0_req         ; clk        ; 0.265  ; 0.265  ; Rise       ; clk             ;
+; M0_wr          ; clk        ; -3.997 ; -3.997 ; Rise       ; clk             ;
+; reset_n        ; clk        ; -0.704 ; -0.704 ; Rise       ; clk             ;
++----------------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------+
+; Clock to Output Times                                                         ;
++-----------------+------------+--------+--------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------------+------------+--------+--------+------------+-----------------+
+; M0_grant        ; clk        ; 7.491  ; 7.491  ; Rise       ; clk             ;
+; M_din[*]        ; clk        ; 11.733 ; 11.733 ; Rise       ; clk             ;
+;  M_din[0]       ; clk        ; 11.314 ; 11.314 ; Rise       ; clk             ;
+;  M_din[1]       ; clk        ; 10.943 ; 10.943 ; Rise       ; clk             ;
+;  M_din[2]       ; clk        ; 11.380 ; 11.380 ; Rise       ; clk             ;
+;  M_din[3]       ; clk        ; 11.305 ; 11.305 ; Rise       ; clk             ;
+;  M_din[4]       ; clk        ; 11.110 ; 11.110 ; Rise       ; clk             ;
+;  M_din[5]       ; clk        ; 11.733 ; 11.733 ; Rise       ; clk             ;
+;  M_din[6]       ; clk        ; 11.693 ; 11.693 ; Rise       ; clk             ;
+;  M_din[7]       ; clk        ; 11.334 ; 11.334 ; Rise       ; clk             ;
+; fifo_cnt[*]     ; clk        ; 12.734 ; 12.734 ; Rise       ; clk             ;
+;  fifo_cnt[0]    ; clk        ; 12.105 ; 12.105 ; Rise       ; clk             ;
+;  fifo_cnt[1]    ; clk        ; 12.431 ; 12.431 ; Rise       ; clk             ;
+;  fifo_cnt[2]    ; clk        ; 12.342 ; 12.342 ; Rise       ; clk             ;
+;  fifo_cnt[3]    ; clk        ; 12.734 ; 12.734 ; Rise       ; clk             ;
+; fifo_flag[*]    ; clk        ; 14.929 ; 14.929 ; Rise       ; clk             ;
+;  fifo_flag[0]   ; clk        ; 13.012 ; 13.012 ; Rise       ; clk             ;
+;  fifo_flag[1]   ; clk        ; 14.929 ; 14.929 ; Rise       ; clk             ;
+;  fifo_flag[2]   ; clk        ; 12.531 ; 12.531 ; Rise       ; clk             ;
+;  fifo_flag[3]   ; clk        ; 13.041 ; 13.041 ; Rise       ; clk             ;
+;  fifo_flag[4]   ; clk        ; 14.751 ; 14.751 ; Rise       ; clk             ;
+;  fifo_flag[5]   ; clk        ; 12.981 ; 12.981 ; Rise       ; clk             ;
+; timer_interrupt ; clk        ; 7.504  ; 7.504  ; Rise       ; clk             ;
++-----------------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                 ;
++-----------------+------------+--------+--------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------------+------------+--------+--------+------------+-----------------+
+; M0_grant        ; clk        ; 7.491  ; 7.491  ; Rise       ; clk             ;
+; M_din[*]        ; clk        ; 7.920  ; 7.920  ; Rise       ; clk             ;
+;  M_din[0]       ; clk        ; 8.308  ; 8.308  ; Rise       ; clk             ;
+;  M_din[1]       ; clk        ; 8.211  ; 8.211  ; Rise       ; clk             ;
+;  M_din[2]       ; clk        ; 8.418  ; 8.418  ; Rise       ; clk             ;
+;  M_din[3]       ; clk        ; 9.288  ; 9.288  ; Rise       ; clk             ;
+;  M_din[4]       ; clk        ; 8.611  ; 8.611  ; Rise       ; clk             ;
+;  M_din[5]       ; clk        ; 8.145  ; 8.145  ; Rise       ; clk             ;
+;  M_din[6]       ; clk        ; 7.920  ; 7.920  ; Rise       ; clk             ;
+;  M_din[7]       ; clk        ; 8.276  ; 8.276  ; Rise       ; clk             ;
+; fifo_cnt[*]     ; clk        ; 8.776  ; 8.776  ; Rise       ; clk             ;
+;  fifo_cnt[0]    ; clk        ; 8.776  ; 8.776  ; Rise       ; clk             ;
+;  fifo_cnt[1]    ; clk        ; 9.084  ; 9.084  ; Rise       ; clk             ;
+;  fifo_cnt[2]    ; clk        ; 8.812  ; 8.812  ; Rise       ; clk             ;
+;  fifo_cnt[3]    ; clk        ; 8.782  ; 8.782  ; Rise       ; clk             ;
+; fifo_flag[*]    ; clk        ; 7.921  ; 7.921  ; Rise       ; clk             ;
+;  fifo_flag[0]   ; clk        ; 8.514  ; 8.514  ; Rise       ; clk             ;
+;  fifo_flag[1]   ; clk        ; 8.922  ; 8.922  ; Rise       ; clk             ;
+;  fifo_flag[2]   ; clk        ; 8.985  ; 8.985  ; Rise       ; clk             ;
+;  fifo_flag[3]   ; clk        ; 7.921  ; 7.921  ; Rise       ; clk             ;
+;  fifo_flag[4]   ; clk        ; 10.276 ; 10.276 ; Rise       ; clk             ;
+;  fifo_flag[5]   ; clk        ; 8.758  ; 8.758  ; Rise       ; clk             ;
+; timer_interrupt ; clk        ; 7.504  ; 7.504  ; Rise       ; clk             ;
++-----------------+------------+--------+--------+------------+-----------------+
+
+
++--------------------------------+
+; Fast Model Setup Summary       ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -2.461 ; -812.267      ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Fast Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 0.215 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clk   ; -1.380 ; -410.380              ;
++-------+--------+-----------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'clk'                                                                                                                                                                                               ;
++--------+-------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                                   ; To Node                                                                  ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -2.461 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[2] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.514      ;
+; -2.461 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[1] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.514      ;
+; -2.461 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[3] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.514      ;
+; -2.461 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[4] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.514      ;
+; -2.461 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[0] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.514      ;
+; -2.461 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[6] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.514      ;
+; -2.461 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[5] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.514      ;
+; -2.449 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[2] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.502      ;
+; -2.449 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[1] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.502      ;
+; -2.449 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[3] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.502      ;
+; -2.449 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[4] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.502      ;
+; -2.449 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[0] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.502      ;
+; -2.449 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[6] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.502      ;
+; -2.449 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[5] ; clk          ; clk         ; 1.000        ; 0.021      ; 3.502      ;
+; -2.443 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[2] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.502      ;
+; -2.443 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[1] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.502      ;
+; -2.443 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[3] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.502      ;
+; -2.443 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[4] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.502      ;
+; -2.443 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[0] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.502      ;
+; -2.443 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[7] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.502      ;
+; -2.443 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[6] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.502      ;
+; -2.443 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[5] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.502      ;
+; -2.438 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[2] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.498      ;
+; -2.438 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[1] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.498      ;
+; -2.438 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[3] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.498      ;
+; -2.438 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[4] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.498      ;
+; -2.438 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[0] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.498      ;
+; -2.438 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[7] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.498      ;
+; -2.438 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[6] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.498      ;
+; -2.438 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[5] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.498      ;
+; -2.436 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[2] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.496      ;
+; -2.436 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[1] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.496      ;
+; -2.436 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[3] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.496      ;
+; -2.436 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[4] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.496      ;
+; -2.436 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[0] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.496      ;
+; -2.436 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[7] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.496      ;
+; -2.436 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[6] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.496      ;
+; -2.436 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[5] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.496      ;
+; -2.431 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[2] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.490      ;
+; -2.431 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[1] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.490      ;
+; -2.431 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[3] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.490      ;
+; -2.431 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[4] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.490      ;
+; -2.431 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[0] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.490      ;
+; -2.431 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[7] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.490      ;
+; -2.431 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[6] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.490      ;
+; -2.431 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[5] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.490      ;
+; -2.426 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[2] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.486      ;
+; -2.426 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[1] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.486      ;
+; -2.426 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[3] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.486      ;
+; -2.426 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[4] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.486      ;
+; -2.426 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[0] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.486      ;
+; -2.426 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[7] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.486      ;
+; -2.426 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[6] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.486      ;
+; -2.426 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg2[5] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.486      ;
+; -2.424 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[2] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.484      ;
+; -2.424 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[1] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.484      ;
+; -2.424 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[3] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.484      ;
+; -2.424 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[4] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.484      ;
+; -2.424 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[0] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.484      ;
+; -2.424 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[7] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.484      ;
+; -2.424 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[6] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.484      ;
+; -2.424 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg0[5] ; clk          ; clk         ; 1.000        ; 0.028      ; 3.484      ;
+; -2.419 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[4] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.478      ;
+; -2.419 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[7] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.478      ;
+; -2.419 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[6] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.478      ;
+; -2.419 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[5] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.478      ;
+; -2.418 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 1.000        ; 0.011      ; 3.461      ;
+; -2.407 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[4] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.466      ;
+; -2.407 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[7] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.466      ;
+; -2.407 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[6] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.466      ;
+; -2.407 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg3[5] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.466      ;
+; -2.398 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[0]                          ; clk          ; clk         ; 1.000        ; 0.000      ; 3.430      ;
+; -2.384 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg2[4] ; clk          ; clk         ; 1.000        ; 0.001      ; 3.417      ;
+; -2.384 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg2[7] ; clk          ; clk         ; 1.000        ; 0.001      ; 3.417      ;
+; -2.384 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg2[6] ; clk          ; clk         ; 1.000        ; 0.001      ; 3.417      ;
+; -2.383 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; timer:U2_timer|timer_reg:U0_timer_reg|S_dout[7]                          ; clk          ; clk         ; 1.000        ; -0.013     ; 3.402      ;
+; -2.373 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 1.000        ; 0.011      ; 3.416      ;
+; -2.372 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg2[4] ; clk          ; clk         ; 1.000        ; 0.001      ; 3.405      ;
+; -2.372 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg2[7] ; clk          ; clk         ; 1.000        ; 0.001      ; 3.405      ;
+; -2.372 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg2[6] ; clk          ; clk         ; 1.000        ; 0.001      ; 3.405      ;
+; -2.370 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg6[2] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.429      ;
+; -2.370 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg6[1] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.429      ;
+; -2.370 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg6[3] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.429      ;
+; -2.370 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg6[4] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.429      ;
+; -2.370 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg6[0] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.429      ;
+; -2.370 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg6[7] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.429      ;
+; -2.370 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg6[6] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.429      ;
+; -2.370 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg6[5] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.429      ;
+; -2.370 ; timer:U2_timer|timer_master:U1_timer_master|master_state[0] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 1.000        ; 0.011      ; 3.413      ;
+; -2.366 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg1[7] ; clk          ; clk         ; 1.000        ; 0.001      ; 3.399      ;
+; -2.364 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[2] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.423      ;
+; -2.364 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[1] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.423      ;
+; -2.364 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[3] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.423      ;
+; -2.364 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[4] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.423      ;
+; -2.364 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[0] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.423      ;
+; -2.364 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[7] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.423      ;
+; -2.364 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[6] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.423      ;
+; -2.364 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1] ; fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|reg5[5] ; clk          ; clk         ; 1.000        ; 0.027      ; 3.423      ;
+; -2.361 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ; clk          ; clk         ; 1.000        ; 0.042      ; 3.435      ;
+; -2.360 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 1.000        ; 0.011      ; 3.403      ;
++--------+-------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'clk'                                                                                                                                                                                                            ;
++-------+--------------------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                                ; To Node                                                                  ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+--------------------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.215 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1]              ; timer:U2_timer|timer_master:U1_timer_master|master_state[1]              ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]                    ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[4]                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[3]                    ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[3]                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; timer:U2_timer|timer_master:U1_timer_master|master_state[2]              ; timer:U2_timer|timer_master:U1_timer_master|master_state[2]              ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[0]                ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[0]                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[7]                ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[7]                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[6]                ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[6]                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[5]                ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[5]                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[1]                          ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[0]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U1_fifo|data_count[1]                          ; fifo_top:U1_fifo_top|fifo:U1_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U1_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U1_fifo|data_count[0]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U3_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|head[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U3_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[1]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[2]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[1]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[0]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[1]                          ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U0_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|tail[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U0_fifo|tail[2]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[0]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[1]                          ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[1]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[2]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.250 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.402      ;
+; 0.257 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.409      ;
+; 0.258 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.410      ;
+; 0.258 ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.410      ;
+; 0.259 ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.411      ;
+; 0.294 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_READ_ERR_STATE         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.446      ;
+; 0.310 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_READ_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.462      ;
+; 0.334 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_FULL_STATE             ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.486      ;
+; 0.349 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; -0.001     ; 0.500      ;
+; 0.357 ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.509      ;
+; 0.359 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[3]                    ; fifo_top:U1_fifo_top|next_address[3]                                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.511      ;
+; 0.360 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_READ_ERR_STATE         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.512      ;
+; 0.362 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.514      ;
+; 0.362 ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.514      ;
+; 0.368 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_FULL_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.520      ;
+; 0.369 ; timer:U2_timer|timer_master:U1_timer_master|master_state[1]              ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; clk          ; clk         ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.521      ;
+; 0.370 ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|tail[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.522      ;
+; 0.374 ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[1]                                ; fifo_top:U1_fifo_top|fifo:U2_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.526      ;
+; 0.375 ; timer:U2_timer|timer_reg:U0_timer_reg|LOAD_ADDRESS[1]                    ; fifo_top:U1_fifo_top|next_address[1]                                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.527      ;
+; 0.375 ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[0]                          ; fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[1]                          ; clk          ; clk         ; 0.000        ; -0.001     ; 0.526      ;
+; 0.377 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[1] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.529      ;
+; 0.378 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.530      ;
+; 0.380 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[2] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.532      ;
+; 0.380 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[5] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[5]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.532      ;
+; 0.382 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[4] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[4]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.534      ;
+; 0.384 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg3[0] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.536      ;
+; 0.385 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg3[3] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[3]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.537      ;
+; 0.389 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.541      ;
+; 0.389 ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_FULL_STATE             ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.541      ;
+; 0.390 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.542      ;
+; 0.395 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_NOP_STATE              ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_ERR_STATE         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.547      ;
+; 0.406 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; fifo_top:U1_fifo_top|next_address[3]                                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.558      ;
+; 0.415 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; fifo_top:U1_fifo_top|next_address[1]                                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.567      ;
+; 0.418 ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.570      ;
+; 0.426 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[7] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.578      ;
+; 0.426 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[6] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.578      ;
+; 0.445 ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_READ_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.597      ;
+; 0.448 ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[0]                                ; fifo_top:U1_fifo_top|fifo:U3_fifo|tail[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.600      ;
+; 0.451 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[3]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.603      ;
+; 0.452 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.604      ;
+; 0.453 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_FULL_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.605      ;
+; 0.455 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[6]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.607      ;
+; 0.455 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[0]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.607      ;
+; 0.458 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg3[6] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.610      ;
+; 0.459 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.611      ;
+; 0.460 ; fifo_top:U1_fifo_top|fifo:U1_fifo|head[2]                                ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[5]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.612      ;
+; 0.461 ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg3[7] ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.613      ;
+; 0.463 ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_READ_STATE             ; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_READ_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.615      ;
+; 0.464 ; timer:U2_timer|timer_master:U1_timer_master|LOAD_VALUE[4]                ; timer:U2_timer|timer_counter:U2_timer_counter|COUNT_VALUE[4]             ; clk          ; clk         ; 0.000        ; -0.001     ; 0.615      ;
+; 0.464 ; fifo_top:U1_fifo_top|fifo:U1_fifo|register_file:U0_register_file|reg1[0] ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[0]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.616      ;
+; 0.464 ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_READ_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.616      ;
+; 0.466 ; fifo_top:U1_fifo_top|fifo:U1_fifo|register_file:U0_register_file|reg1[1] ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[1]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.618      ;
+; 0.468 ; fifo_top:U1_fifo_top|fifo:U1_fifo|register_file:U0_register_file|reg1[3] ; fifo_top:U1_fifo_top|fifo:U1_fifo|dout[3]                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.620      ;
+; 0.470 ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_WRITE_STATE            ; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_READ_STATE             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.622      ;
+; 0.471 ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ; fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|reg2[5] ; clk          ; clk         ; 0.000        ; 0.011      ; 0.634      ;
++-------+--------------------------------------------------------------------------+--------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'clk'                                                                                                                     ;
++--------+--------------+----------------+------------------+-------+------------+--------------------------------------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                                                                   ;
++--------+--------------+----------------+------------------+-------+------------+--------------------------------------------------------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; clk   ; Rise       ; clk                                                                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; bus:U0_bus|Arbitrator:U0_Arbitrator|Arbit_STATE                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; bus:U0_bus|bus_mx_S2                                                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; bus:U0_bus|bus_mx_S2                                                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|cur_sel                                             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|cur_sel                                             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[0]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[0]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[1]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[1]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[2]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[2]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[3]                          ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[3]                          ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[0]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[2]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[2]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[3]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[3]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[4]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[4]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[5]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[5]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[6]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|dout[7]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_EMPTY_STATE            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_EMPTY_STATE            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_FULL_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_READ_ERR_STATE    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_NOP_STATE              ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_NOP_STATE              ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_ERR_STATE         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_ERR_STATE         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_READ_STATE             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_ERR_STATE        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_STATE            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_WRITE_STATE            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[0]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[1]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|head[2]                                ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[3] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[4] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[4] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[5] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[5] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[6] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[6] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[7] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg0[7] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[3] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[4] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[4] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[5] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[5] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[6] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[6] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[7] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg1[7] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[3] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[4] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[4] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[5] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[5] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|reg2[6] ;
++--------+--------------+----------------+------------------+-------+------------+--------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Setup Times                                                                  ;
++----------------+------------+--------+--------+------------+-----------------+
+; Data Port      ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++----------------+------------+--------+--------+------------+-----------------+
+; M0_address[*]  ; clk        ; 4.782  ; 4.782  ; Rise       ; clk             ;
+;  M0_address[0] ; clk        ; 4.733  ; 4.733  ; Rise       ; clk             ;
+;  M0_address[1] ; clk        ; 4.543  ; 4.543  ; Rise       ; clk             ;
+;  M0_address[2] ; clk        ; 2.472  ; 2.472  ; Rise       ; clk             ;
+;  M0_address[3] ; clk        ; 4.708  ; 4.708  ; Rise       ; clk             ;
+;  M0_address[4] ; clk        ; 4.495  ; 4.495  ; Rise       ; clk             ;
+;  M0_address[5] ; clk        ; 4.782  ; 4.782  ; Rise       ; clk             ;
+;  M0_address[6] ; clk        ; 4.059  ; 4.059  ; Rise       ; clk             ;
+;  M0_address[7] ; clk        ; 4.380  ; 4.380  ; Rise       ; clk             ;
+; M0_dout[*]     ; clk        ; 4.024  ; 4.024  ; Rise       ; clk             ;
+;  M0_dout[0]    ; clk        ; 3.230  ; 3.230  ; Rise       ; clk             ;
+;  M0_dout[1]    ; clk        ; 3.756  ; 3.756  ; Rise       ; clk             ;
+;  M0_dout[2]    ; clk        ; 3.496  ; 3.496  ; Rise       ; clk             ;
+;  M0_dout[3]    ; clk        ; 3.727  ; 3.727  ; Rise       ; clk             ;
+;  M0_dout[4]    ; clk        ; 3.365  ; 3.365  ; Rise       ; clk             ;
+;  M0_dout[5]    ; clk        ; 4.024  ; 4.024  ; Rise       ; clk             ;
+;  M0_dout[6]    ; clk        ; 3.580  ; 3.580  ; Rise       ; clk             ;
+;  M0_dout[7]    ; clk        ; 3.815  ; 3.815  ; Rise       ; clk             ;
+; M0_req         ; clk        ; -0.292 ; -0.292 ; Rise       ; clk             ;
+; M0_wr          ; clk        ; 4.679  ; 4.679  ; Rise       ; clk             ;
+; reset_n        ; clk        ; 2.677  ; 2.677  ; Rise       ; clk             ;
++----------------+------------+--------+--------+------------+-----------------+
+
+
++------------------------------------------------------------------------------+
+; Hold Times                                                                   ;
++----------------+------------+--------+--------+------------+-----------------+
+; Data Port      ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++----------------+------------+--------+--------+------------+-----------------+
+; M0_address[*]  ; clk        ; -0.160 ; -0.160 ; Rise       ; clk             ;
+;  M0_address[0] ; clk        ; -2.362 ; -2.362 ; Rise       ; clk             ;
+;  M0_address[1] ; clk        ; -1.964 ; -1.964 ; Rise       ; clk             ;
+;  M0_address[2] ; clk        ; -0.160 ; -0.160 ; Rise       ; clk             ;
+;  M0_address[3] ; clk        ; -2.034 ; -2.034 ; Rise       ; clk             ;
+;  M0_address[4] ; clk        ; -2.387 ; -2.387 ; Rise       ; clk             ;
+;  M0_address[5] ; clk        ; -2.401 ; -2.401 ; Rise       ; clk             ;
+;  M0_address[6] ; clk        ; -1.892 ; -1.892 ; Rise       ; clk             ;
+;  M0_address[7] ; clk        ; -2.213 ; -2.213 ; Rise       ; clk             ;
+; M0_dout[*]     ; clk        ; -1.835 ; -1.835 ; Rise       ; clk             ;
+;  M0_dout[0]    ; clk        ; -1.890 ; -1.890 ; Rise       ; clk             ;
+;  M0_dout[1]    ; clk        ; -1.993 ; -1.993 ; Rise       ; clk             ;
+;  M0_dout[2]    ; clk        ; -1.835 ; -1.835 ; Rise       ; clk             ;
+;  M0_dout[3]    ; clk        ; -2.061 ; -2.061 ; Rise       ; clk             ;
+;  M0_dout[4]    ; clk        ; -2.022 ; -2.022 ; Rise       ; clk             ;
+;  M0_dout[5]    ; clk        ; -2.302 ; -2.302 ; Rise       ; clk             ;
+;  M0_dout[6]    ; clk        ; -1.888 ; -1.888 ; Rise       ; clk             ;
+;  M0_dout[7]    ; clk        ; -2.300 ; -2.300 ; Rise       ; clk             ;
+; M0_req         ; clk        ; 0.412  ; 0.412  ; Rise       ; clk             ;
+; M0_wr          ; clk        ; -2.133 ; -2.133 ; Rise       ; clk             ;
+; reset_n        ; clk        ; -0.111 ; -0.111 ; Rise       ; clk             ;
++----------------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Clock to Output Times                                                       ;
++-----------------+------------+-------+-------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------------+------------+-------+-------+------------+-----------------+
+; M0_grant        ; clk        ; 4.196 ; 4.196 ; Rise       ; clk             ;
+; M_din[*]        ; clk        ; 6.078 ; 6.078 ; Rise       ; clk             ;
+;  M_din[0]       ; clk        ; 5.899 ; 5.899 ; Rise       ; clk             ;
+;  M_din[1]       ; clk        ; 5.696 ; 5.696 ; Rise       ; clk             ;
+;  M_din[2]       ; clk        ; 5.942 ; 5.942 ; Rise       ; clk             ;
+;  M_din[3]       ; clk        ; 5.901 ; 5.901 ; Rise       ; clk             ;
+;  M_din[4]       ; clk        ; 5.805 ; 5.805 ; Rise       ; clk             ;
+;  M_din[5]       ; clk        ; 6.078 ; 6.078 ; Rise       ; clk             ;
+;  M_din[6]       ; clk        ; 6.073 ; 6.073 ; Rise       ; clk             ;
+;  M_din[7]       ; clk        ; 5.933 ; 5.933 ; Rise       ; clk             ;
+; fifo_cnt[*]     ; clk        ; 6.464 ; 6.464 ; Rise       ; clk             ;
+;  fifo_cnt[0]    ; clk        ; 6.183 ; 6.183 ; Rise       ; clk             ;
+;  fifo_cnt[1]    ; clk        ; 6.358 ; 6.358 ; Rise       ; clk             ;
+;  fifo_cnt[2]    ; clk        ; 6.303 ; 6.303 ; Rise       ; clk             ;
+;  fifo_cnt[3]    ; clk        ; 6.464 ; 6.464 ; Rise       ; clk             ;
+; fifo_flag[*]    ; clk        ; 7.490 ; 7.490 ; Rise       ; clk             ;
+;  fifo_flag[0]   ; clk        ; 6.626 ; 6.626 ; Rise       ; clk             ;
+;  fifo_flag[1]   ; clk        ; 7.467 ; 7.467 ; Rise       ; clk             ;
+;  fifo_flag[2]   ; clk        ; 6.434 ; 6.434 ; Rise       ; clk             ;
+;  fifo_flag[3]   ; clk        ; 6.610 ; 6.610 ; Rise       ; clk             ;
+;  fifo_flag[4]   ; clk        ; 7.490 ; 7.490 ; Rise       ; clk             ;
+;  fifo_flag[5]   ; clk        ; 6.596 ; 6.596 ; Rise       ; clk             ;
+; timer_interrupt ; clk        ; 4.227 ; 4.227 ; Rise       ; clk             ;
++-----------------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                               ;
++-----------------+------------+-------+-------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------------+------------+-------+-------+------------+-----------------+
+; M0_grant        ; clk        ; 4.196 ; 4.196 ; Rise       ; clk             ;
+; M_din[*]        ; clk        ; 4.380 ; 4.380 ; Rise       ; clk             ;
+;  M_din[0]       ; clk        ; 4.550 ; 4.550 ; Rise       ; clk             ;
+;  M_din[1]       ; clk        ; 4.520 ; 4.520 ; Rise       ; clk             ;
+;  M_din[2]       ; clk        ; 4.638 ; 4.638 ; Rise       ; clk             ;
+;  M_din[3]       ; clk        ; 5.041 ; 5.041 ; Rise       ; clk             ;
+;  M_din[4]       ; clk        ; 4.689 ; 4.689 ; Rise       ; clk             ;
+;  M_din[5]       ; clk        ; 4.476 ; 4.476 ; Rise       ; clk             ;
+;  M_din[6]       ; clk        ; 4.380 ; 4.380 ; Rise       ; clk             ;
+;  M_din[7]       ; clk        ; 4.566 ; 4.566 ; Rise       ; clk             ;
+; fifo_cnt[*]     ; clk        ; 4.710 ; 4.710 ; Rise       ; clk             ;
+;  fifo_cnt[0]    ; clk        ; 4.710 ; 4.710 ; Rise       ; clk             ;
+;  fifo_cnt[1]    ; clk        ; 4.864 ; 4.864 ; Rise       ; clk             ;
+;  fifo_cnt[2]    ; clk        ; 4.740 ; 4.740 ; Rise       ; clk             ;
+;  fifo_cnt[3]    ; clk        ; 4.712 ; 4.712 ; Rise       ; clk             ;
+; fifo_flag[*]    ; clk        ; 4.383 ; 4.383 ; Rise       ; clk             ;
+;  fifo_flag[0]   ; clk        ; 4.699 ; 4.699 ; Rise       ; clk             ;
+;  fifo_flag[1]   ; clk        ; 4.889 ; 4.889 ; Rise       ; clk             ;
+;  fifo_flag[2]   ; clk        ; 4.823 ; 4.823 ; Rise       ; clk             ;
+;  fifo_flag[3]   ; clk        ; 4.383 ; 4.383 ; Rise       ; clk             ;
+;  fifo_flag[4]   ; clk        ; 5.509 ; 5.509 ; Rise       ; clk             ;
+;  fifo_flag[5]   ; clk        ; 4.804 ; 4.804 ; Rise       ; clk             ;
+; timer_interrupt ; clk        ; 4.227 ; 4.227 ; Rise       ; clk             ;
++-----------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                             ;
++------------------+-----------+-------+----------+---------+---------------------+
+; Clock            ; Setup     ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+-----------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -6.702    ; 0.215 ; N/A      ; N/A     ; -1.380              ;
+;  clk             ; -6.702    ; 0.215 ; N/A      ; N/A     ; -1.380              ;
+; Design-wide TNS  ; -2258.206 ; 0.0   ; 0.0      ; 0.0     ; -410.38             ;
+;  clk             ; -2258.206 ; 0.000 ; N/A      ; N/A     ; -410.380            ;
++------------------+-----------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------+
+; Setup Times                                                                  ;
++----------------+------------+--------+--------+------------+-----------------+
+; Data Port      ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++----------------+------------+--------+--------+------------+-----------------+
+; M0_address[*]  ; clk        ; 10.099 ; 10.099 ; Rise       ; clk             ;
+;  M0_address[0] ; clk        ; 9.728  ; 9.728  ; Rise       ; clk             ;
+;  M0_address[1] ; clk        ; 9.638  ; 9.638  ; Rise       ; clk             ;
+;  M0_address[2] ; clk        ; 6.113  ; 6.113  ; Rise       ; clk             ;
+;  M0_address[3] ; clk        ; 9.668  ; 9.668  ; Rise       ; clk             ;
+;  M0_address[4] ; clk        ; 9.448  ; 9.448  ; Rise       ; clk             ;
+;  M0_address[5] ; clk        ; 10.099 ; 10.099 ; Rise       ; clk             ;
+;  M0_address[6] ; clk        ; 8.524  ; 8.524  ; Rise       ; clk             ;
+;  M0_address[7] ; clk        ; 9.108  ; 9.108  ; Rise       ; clk             ;
+; M0_dout[*]     ; clk        ; 8.208  ; 8.208  ; Rise       ; clk             ;
+;  M0_dout[0]    ; clk        ; 6.569  ; 6.569  ; Rise       ; clk             ;
+;  M0_dout[1]    ; clk        ; 7.714  ; 7.714  ; Rise       ; clk             ;
+;  M0_dout[2]    ; clk        ; 7.155  ; 7.155  ; Rise       ; clk             ;
+;  M0_dout[3]    ; clk        ; 7.704  ; 7.704  ; Rise       ; clk             ;
+;  M0_dout[4]    ; clk        ; 6.921  ; 6.921  ; Rise       ; clk             ;
+;  M0_dout[5]    ; clk        ; 8.208  ; 8.208  ; Rise       ; clk             ;
+;  M0_dout[6]    ; clk        ; 7.359  ; 7.359  ; Rise       ; clk             ;
+;  M0_dout[7]    ; clk        ; 7.836  ; 7.836  ; Rise       ; clk             ;
+; M0_req         ; clk        ; -0.035 ; -0.035 ; Rise       ; clk             ;
+; M0_wr          ; clk        ; 9.844  ; 9.844  ; Rise       ; clk             ;
+; reset_n        ; clk        ; 6.406  ; 6.406  ; Rise       ; clk             ;
++----------------+------------+--------+--------+------------+-----------------+
+
+
++------------------------------------------------------------------------------+
+; Hold Times                                                                   ;
++----------------+------------+--------+--------+------------+-----------------+
+; Data Port      ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++----------------+------------+--------+--------+------------+-----------------+
+; M0_address[*]  ; clk        ; -0.160 ; -0.160 ; Rise       ; clk             ;
+;  M0_address[0] ; clk        ; -2.362 ; -2.362 ; Rise       ; clk             ;
+;  M0_address[1] ; clk        ; -1.964 ; -1.964 ; Rise       ; clk             ;
+;  M0_address[2] ; clk        ; -0.160 ; -0.160 ; Rise       ; clk             ;
+;  M0_address[3] ; clk        ; -2.034 ; -2.034 ; Rise       ; clk             ;
+;  M0_address[4] ; clk        ; -2.387 ; -2.387 ; Rise       ; clk             ;
+;  M0_address[5] ; clk        ; -2.401 ; -2.401 ; Rise       ; clk             ;
+;  M0_address[6] ; clk        ; -1.892 ; -1.892 ; Rise       ; clk             ;
+;  M0_address[7] ; clk        ; -2.213 ; -2.213 ; Rise       ; clk             ;
+; M0_dout[*]     ; clk        ; -1.835 ; -1.835 ; Rise       ; clk             ;
+;  M0_dout[0]    ; clk        ; -1.890 ; -1.890 ; Rise       ; clk             ;
+;  M0_dout[1]    ; clk        ; -1.993 ; -1.993 ; Rise       ; clk             ;
+;  M0_dout[2]    ; clk        ; -1.835 ; -1.835 ; Rise       ; clk             ;
+;  M0_dout[3]    ; clk        ; -2.061 ; -2.061 ; Rise       ; clk             ;
+;  M0_dout[4]    ; clk        ; -2.022 ; -2.022 ; Rise       ; clk             ;
+;  M0_dout[5]    ; clk        ; -2.302 ; -2.302 ; Rise       ; clk             ;
+;  M0_dout[6]    ; clk        ; -1.888 ; -1.888 ; Rise       ; clk             ;
+;  M0_dout[7]    ; clk        ; -2.300 ; -2.300 ; Rise       ; clk             ;
+; M0_req         ; clk        ; 0.412  ; 0.412  ; Rise       ; clk             ;
+; M0_wr          ; clk        ; -2.133 ; -2.133 ; Rise       ; clk             ;
+; reset_n        ; clk        ; -0.111 ; -0.111 ; Rise       ; clk             ;
++----------------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------+
+; Clock to Output Times                                                         ;
++-----------------+------------+--------+--------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------------+------------+--------+--------+------------+-----------------+
+; M0_grant        ; clk        ; 7.491  ; 7.491  ; Rise       ; clk             ;
+; M_din[*]        ; clk        ; 11.733 ; 11.733 ; Rise       ; clk             ;
+;  M_din[0]       ; clk        ; 11.314 ; 11.314 ; Rise       ; clk             ;
+;  M_din[1]       ; clk        ; 10.943 ; 10.943 ; Rise       ; clk             ;
+;  M_din[2]       ; clk        ; 11.380 ; 11.380 ; Rise       ; clk             ;
+;  M_din[3]       ; clk        ; 11.305 ; 11.305 ; Rise       ; clk             ;
+;  M_din[4]       ; clk        ; 11.110 ; 11.110 ; Rise       ; clk             ;
+;  M_din[5]       ; clk        ; 11.733 ; 11.733 ; Rise       ; clk             ;
+;  M_din[6]       ; clk        ; 11.693 ; 11.693 ; Rise       ; clk             ;
+;  M_din[7]       ; clk        ; 11.334 ; 11.334 ; Rise       ; clk             ;
+; fifo_cnt[*]     ; clk        ; 12.734 ; 12.734 ; Rise       ; clk             ;
+;  fifo_cnt[0]    ; clk        ; 12.105 ; 12.105 ; Rise       ; clk             ;
+;  fifo_cnt[1]    ; clk        ; 12.431 ; 12.431 ; Rise       ; clk             ;
+;  fifo_cnt[2]    ; clk        ; 12.342 ; 12.342 ; Rise       ; clk             ;
+;  fifo_cnt[3]    ; clk        ; 12.734 ; 12.734 ; Rise       ; clk             ;
+; fifo_flag[*]    ; clk        ; 14.929 ; 14.929 ; Rise       ; clk             ;
+;  fifo_flag[0]   ; clk        ; 13.012 ; 13.012 ; Rise       ; clk             ;
+;  fifo_flag[1]   ; clk        ; 14.929 ; 14.929 ; Rise       ; clk             ;
+;  fifo_flag[2]   ; clk        ; 12.531 ; 12.531 ; Rise       ; clk             ;
+;  fifo_flag[3]   ; clk        ; 13.041 ; 13.041 ; Rise       ; clk             ;
+;  fifo_flag[4]   ; clk        ; 14.751 ; 14.751 ; Rise       ; clk             ;
+;  fifo_flag[5]   ; clk        ; 12.981 ; 12.981 ; Rise       ; clk             ;
+; timer_interrupt ; clk        ; 7.504  ; 7.504  ; Rise       ; clk             ;
++-----------------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                               ;
++-----------------+------------+-------+-------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------------+------------+-------+-------+------------+-----------------+
+; M0_grant        ; clk        ; 4.196 ; 4.196 ; Rise       ; clk             ;
+; M_din[*]        ; clk        ; 4.380 ; 4.380 ; Rise       ; clk             ;
+;  M_din[0]       ; clk        ; 4.550 ; 4.550 ; Rise       ; clk             ;
+;  M_din[1]       ; clk        ; 4.520 ; 4.520 ; Rise       ; clk             ;
+;  M_din[2]       ; clk        ; 4.638 ; 4.638 ; Rise       ; clk             ;
+;  M_din[3]       ; clk        ; 5.041 ; 5.041 ; Rise       ; clk             ;
+;  M_din[4]       ; clk        ; 4.689 ; 4.689 ; Rise       ; clk             ;
+;  M_din[5]       ; clk        ; 4.476 ; 4.476 ; Rise       ; clk             ;
+;  M_din[6]       ; clk        ; 4.380 ; 4.380 ; Rise       ; clk             ;
+;  M_din[7]       ; clk        ; 4.566 ; 4.566 ; Rise       ; clk             ;
+; fifo_cnt[*]     ; clk        ; 4.710 ; 4.710 ; Rise       ; clk             ;
+;  fifo_cnt[0]    ; clk        ; 4.710 ; 4.710 ; Rise       ; clk             ;
+;  fifo_cnt[1]    ; clk        ; 4.864 ; 4.864 ; Rise       ; clk             ;
+;  fifo_cnt[2]    ; clk        ; 4.740 ; 4.740 ; Rise       ; clk             ;
+;  fifo_cnt[3]    ; clk        ; 4.712 ; 4.712 ; Rise       ; clk             ;
+; fifo_flag[*]    ; clk        ; 4.383 ; 4.383 ; Rise       ; clk             ;
+;  fifo_flag[0]   ; clk        ; 4.699 ; 4.699 ; Rise       ; clk             ;
+;  fifo_flag[1]   ; clk        ; 4.889 ; 4.889 ; Rise       ; clk             ;
+;  fifo_flag[2]   ; clk        ; 4.823 ; 4.823 ; Rise       ; clk             ;
+;  fifo_flag[3]   ; clk        ; 4.383 ; 4.383 ; Rise       ; clk             ;
+;  fifo_flag[4]   ; clk        ; 5.509 ; 5.509 ; Rise       ; clk             ;
+;  fifo_flag[5]   ; clk        ; 4.804 ; 4.804 ; Rise       ; clk             ;
+; timer_interrupt ; clk        ; 4.227 ; 4.227 ; Rise       ; clk             ;
++-----------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 69649    ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 69649    ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 19    ; 19   ;
+; Unconstrained Input Port Paths  ; 4129  ; 4129 ;
+; Unconstrained Output Ports      ; 20    ; 20   ;
+; Unconstrained Output Port Paths ; 253   ; 253  ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II TimeQuest Timing Analyzer
+    Info: Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Web Edition
+    Info: Processing started: Wed Dec 07 15:12:40 2011
+Info: Command: quartus_sta top -c top
+Info: qsta_default_script.tcl version: #1
+Warning: Parallel compilation is not licensed and has been disabled
+Info: Low junction temperature is 0 degrees C
+Info: High junction temperature is 85 degrees C
+Critical Warning: Synopsys Design Constraints File file not found: 'top.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info: No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info: Deriving Clocks
+    Info: create_clock -period 1.000 -name clk clk
+Info: Analyzing Slow Model
+Critical Warning: Timing requirements not met
+Info: Worst-case setup slack is -6.702
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -6.702     -2258.206 clk 
+Info: Worst-case hold slack is 0.391
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:     0.391         0.000 clk 
+Info: No Recovery paths to report
+Info: No Removal paths to report
+Info: Worst-case minimum pulse width slack is -1.380
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -1.380      -410.380 clk 
+Info: The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Info: Started post-fitting delay annotation
+Warning: Found 20 output pins without output pin load capacitance assignment
+    Info: Pin "M0_grant" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "M_din[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "M_din[1]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "M_din[2]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "M_din[3]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "M_din[4]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "M_din[5]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "M_din[6]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "M_din[7]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "timer_interrupt" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_cnt[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_cnt[1]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_cnt[2]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_cnt[3]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_flag[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_flag[1]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_flag[2]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_flag[3]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_flag[4]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "fifo_flag[5]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+Info: Delay annotation completed successfully
+Critical Warning: Timing requirements not met
+Info: Worst-case setup slack is -2.461
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -2.461      -812.267 clk 
+Info: Worst-case hold slack is 0.215
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:     0.215         0.000 clk 
+Info: No Recovery paths to report
+Info: No Removal paths to report
+Info: Worst-case minimum pulse width slack is -1.380
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -1.380      -410.380 clk 
+Info: The selected device family is not supported by the report_metastability command.
+Info: Design is not fully constrained for setup requirements
+Info: Design is not fully constrained for hold requirements
+Info: Quartus II TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 307 megabytes
+    Info: Processing ended: Wed Dec 07 15:12:46 2011
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:05
+
+

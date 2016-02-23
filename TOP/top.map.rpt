@@ -1,0 +1,1458 @@
+Analysis & Synthesis report for top
+Wed Dec 07 15:12:22 2011
+Quartus II Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |top|fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE
+  9. State Machine - |top|fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE
+ 10. State Machine - |top|fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE
+ 11. State Machine - |top|fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: bus:U0_bus|Arbitrator:U0_Arbitrator
+ 16. Parameter Settings for User Entity Instance: fifo_top:U1_fifo_top|fifo:U0_fifo
+ 17. Parameter Settings for User Entity Instance: fifo_top:U1_fifo_top|fifo:U1_fifo
+ 18. Parameter Settings for User Entity Instance: fifo_top:U1_fifo_top|fifo:U2_fifo
+ 19. Parameter Settings for User Entity Instance: fifo_top:U1_fifo_top|fifo:U3_fifo
+ 20. Parameter Settings for User Entity Instance: timer:U2_timer|timer_reg:U0_timer_reg
+ 21. Parameter Settings for User Entity Instance: timer:U2_timer|timer_master:U1_timer_master
+ 22. Parameter Settings for User Entity Instance: timer:U2_timer|timer_counter:U2_timer_counter
+ 23. Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U4_master_state2_mx2"
+ 24. Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U3_master_state1_mx2"
+ 25. Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U2_master_state0_mx2"
+ 26. Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U1_counter_state1_mx2"
+ 27. Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U0_counter_state0_mx2"
+ 28. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U8_rd_err_last_mx"
+ 29. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U7_rd_ack_last_mx"
+ 30. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U6_wr_err_last_mx"
+ 31. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U5_wr_ack_last_mx"
+ 32. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U4_empty_last_mx"
+ 33. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U3_full_last_mx"
+ 34. Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U2_fifo_cnt_last_mx"
+ 35. Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U1_dout_last_mx"
+ 36. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_rd_err_mx2"
+ 37. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_rd_err_mx2"
+ 38. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_rd_err_mx2"
+ 39. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_rd_err_mx2"
+ 40. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_rd_err_mx2"
+ 41. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_rd_err_mx2"
+ 42. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_rd_err_mx2"
+ 43. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_rd_ack_mx2"
+ 44. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_rd_ack_mx2"
+ 45. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_rd_ack_mx2"
+ 46. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_rd_ack_mx2"
+ 47. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_rd_ack_mx2"
+ 48. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_rd_ack_mx2"
+ 49. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_rd_ack_mx2"
+ 50. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_wr_err_mx2"
+ 51. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_wr_err_mx2"
+ 52. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_wr_err_mx2"
+ 53. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_wr_err_mx2"
+ 54. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_wr_err_mx2"
+ 55. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_wr_err_mx2"
+ 56. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_wr_err_mx2"
+ 57. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_wr_ack_mx2"
+ 58. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_wr_ack_mx2"
+ 59. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_wr_ack_mx2"
+ 60. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_wr_ack_mx2"
+ 61. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_wr_ack_mx2"
+ 62. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_wr_ack_mx2"
+ 63. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_wr_ack_mx2"
+ 64. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_empty_mx2"
+ 65. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_empty_mx2"
+ 66. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_empty_mx2"
+ 67. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_empty_mx2"
+ 68. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_empty_mx2"
+ 69. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_empty_mx2"
+ 70. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_empty_mx2"
+ 71. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_full_mx2"
+ 72. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_full_mx2"
+ 73. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_full_mx2"
+ 74. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_full_mx2"
+ 75. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_full_mx2"
+ 76. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_full_mx2"
+ 77. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_full_mx2"
+ 78. Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_8_cnt_mx2"
+ 79. Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_7_cnt_mx2"
+ 80. Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_6_cnt_mx2"
+ 81. Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_5_cnt_mx2"
+ 82. Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_4_cnt_mx2"
+ 83. Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_3_cnt_mx2"
+ 84. Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_1_cnt_mx2"
+ 85. Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_8_ot_mx2"
+ 86. Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_7_ot_mx2"
+ 87. Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_6_ot_mx2"
+ 88. Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_5_ot_mx2"
+ 89. Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_4_ot_mx2"
+ 90. Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_3_ot_mx2"
+ 91. Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_1_ot_mx2"
+ 92. Port Connectivity Checks: "fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_mx2:U0_rf_mx_we"
+ 93. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U11_sel_mx2"
+ 94. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U00_sel_mx2"
+ 95. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U11_write_mx2"
+ 96. Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U00_read_mx2"
+ 97. Port Connectivity Checks: "bus:U0_bus|mx2_addr:U6_M_din_mx2"
+ 98. Port Connectivity Checks: "bus:U0_bus|mx2_addr:U5_M_din_mx2"
+ 99. Elapsed Time Per Partition
+100. Analysis & Synthesis Messages
+101. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2011 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                       ;
++------------------------------------+-----------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Dec 07 15:12:22 2011         ;
+; Quartus II Version                 ; 11.0 Build 208 07/03/2011 SP 1 SJ Web Edition ;
+; Revision Name                      ; top                                           ;
+; Top-level Entity Name              ; top                                           ;
+; Family                             ; Cyclone II                                    ;
+; Total logic elements               ; 874                                           ;
+;     Total combinational functions  ; 621                                           ;
+;     Dedicated logic registers      ; 409                                           ;
+; Total registers                    ; 409                                           ;
+; Total pins                         ; 40                                            ;
+; Total virtual pins                 ; 0                                             ;
+; Total memory bits                  ; 0                                             ;
+; Embedded Multiplier 9-bit elements ; 0                                             ;
+; Total PLLs                         ; 0                                             ;
++------------------------------------+-----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C70F896C6       ;                    ;
+; Top-level entity name                                                      ; top                ; top                ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 2      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                            ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                        ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
+; timer_reg.v                      ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/timer_reg.v       ;
+; timer_master.v                   ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/timer_master.v    ;
+; timer_counter.v                  ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/timer_counter.v   ;
+; timer.v                          ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/timer.v           ;
+; fifo_top.v                       ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/fifo_top.v        ;
+; fifo.v                           ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/fifo.v            ;
+; top.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/top.v             ;
+; bus.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/bus.v             ;
+; Arbitrator.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/Arbitrator.v      ;
+; Address_decoder.v                ; yes             ; User Verilog HDL File  ; C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/Address_decoder.v ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 874   ;
+;                                             ;       ;
+; Total combinational functions               ; 621   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 473   ;
+;     -- 3 input functions                    ; 89    ;
+;     -- <=2 input functions                  ; 59    ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 602   ;
+;     -- arithmetic mode                      ; 19    ;
+;                                             ;       ;
+; Total registers                             ; 409   ;
+;     -- Dedicated logic registers            ; 409   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 40    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 409   ;
+; Total fan-out                               ; 3538  ;
+; Average fan-out                             ; 3.31  ;
++---------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                             ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                      ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+--------------+
+; |top                                      ; 621 (0)           ; 409 (0)      ; 0           ; 0            ; 0       ; 0         ; 40   ; 0            ; |top                                                                                     ;              ;
+;    |bus:U0_bus|                           ; 35 (2)            ; 2 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|bus:U0_bus                                                                          ;              ;
+;       |Address_decoder:U4_addr_decoder|   ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|bus:U0_bus|Address_decoder:U4_addr_decoder                                          ;              ;
+;       |Arbitrator:U0_Arbitrator|          ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|bus:U0_bus|Arbitrator:U0_Arbitrator                                                 ;              ;
+;       |mx2_addr:U2_S_addr_mx2|            ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|bus:U0_bus|mx2_addr:U2_S_addr_mx2                                                   ;              ;
+;       |mx2_addr:U3_S_din_mx2|             ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|bus:U0_bus|mx2_addr:U3_S_din_mx2                                                    ;              ;
+;       |mx2_addr:U7_M_din_mx2|             ; 10 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|bus:U0_bus|mx2_addr:U7_M_din_mx2                                                    ;              ;
+;       |mx2_bus:U1_S_wr_mx2|               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|bus:U0_bus|mx2_bus:U1_S_wr_mx2                                                      ;              ;
+;    |fifo_top:U1_fifo_top|                 ; 469 (0)           ; 366 (5)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top                                                                ;              ;
+;       |_andcn4:U2_fifo_cnt_last_and|      ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|_andcn4:U2_fifo_cnt_last_and                                   ;              ;
+;       |_andcn:U3_full_last_and|           ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|_andcn:U3_full_last_and                                        ;              ;
+;       |_andcn:U4_empty_last_and|          ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|_andcn:U4_empty_last_and                                       ;              ;
+;       |_andcn:U5_wr_ack_last_and|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|_andcn:U5_wr_ack_last_and                                      ;              ;
+;       |_andcn:U6_wr_err_last_and|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|_andcn:U6_wr_err_last_and                                      ;              ;
+;       |_andcn:U7_rd_ack_last_and|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|_andcn:U7_rd_ack_last_and                                      ;              ;
+;       |_andcn:U8_rd_err_last_and|         ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|_andcn:U8_rd_err_last_and                                      ;              ;
+;       |cnt_mx2:U3_1_cnt_mx2|              ; 12 (12)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|cnt_mx2:U3_1_cnt_mx2                                           ;              ;
+;       |decoder:U0_decoder|                ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|decoder:U0_decoder                                             ;              ;
+;       |fifo:U0_fifo|                      ; 96 (87)           ; 91 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U0_fifo                                                   ;              ;
+;          |register_file:U0_register_file| ; 9 (8)             ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file                    ;              ;
+;             |fifo_and1:U0_rf_we|          ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|fifo_and1:U0_rf_we ;              ;
+;       |fifo:U1_fifo|                      ; 97 (88)           ; 90 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U1_fifo                                                   ;              ;
+;          |register_file:U0_register_file| ; 9 (8)             ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U1_fifo|register_file:U0_register_file                    ;              ;
+;             |fifo_and1:U0_rf_we|          ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U1_fifo|register_file:U0_register_file|fifo_and1:U0_rf_we ;              ;
+;       |fifo:U2_fifo|                      ; 98 (89)           ; 90 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U2_fifo                                                   ;              ;
+;          |register_file:U0_register_file| ; 9 (8)             ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file                    ;              ;
+;             |fifo_and1:U0_rf_we|          ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U2_fifo|register_file:U0_register_file|fifo_and1:U0_rf_we ;              ;
+;       |fifo:U3_fifo|                      ; 100 (91)          ; 90 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U3_fifo                                                   ;              ;
+;          |register_file:U0_register_file| ; 9 (8)             ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file                    ;              ;
+;             |fifo_and1:U0_rf_we|          ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|fifo:U3_fifo|register_file:U0_register_file|fifo_and1:U0_rf_we ;              ;
+;       |mx2:U3_1_empty_mx2|                ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|mx2:U3_1_empty_mx2                                             ;              ;
+;       |mx2:U3_1_full_mx2|                 ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|mx2:U3_1_full_mx2                                              ;              ;
+;       |mx2:U3_1_rd_ack_mx2|               ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|mx2:U3_1_rd_ack_mx2                                            ;              ;
+;       |mx2:U3_1_rd_err_mx2|               ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|mx2:U3_1_rd_err_mx2                                            ;              ;
+;       |mx2:U3_1_wr_ack_mx2|               ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|mx2:U3_1_wr_ack_mx2                                            ;              ;
+;       |mx2:U3_1_wr_err_mx2|               ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|mx2:U3_1_wr_err_mx2                                            ;              ;
+;       |ot_mx2:U3_1_ot_mx2|                ; 28 (28)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|fifo_top:U1_fifo_top|ot_mx2:U3_1_ot_mx2                                             ;              ;
+;    |timer:U2_timer|                       ; 117 (0)           ; 41 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|timer:U2_timer                                                                      ;              ;
+;       |timer_counter:U2_timer_counter|    ; 30 (30)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|timer:U2_timer|timer_counter:U2_timer_counter                                       ;              ;
+;       |timer_master:U1_timer_master|      ; 18 (18)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|timer:U2_timer|timer_master:U1_timer_master                                         ;              ;
+;       |timer_reg:U0_timer_reg|            ; 69 (69)           ; 20 (20)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|timer:U2_timer|timer_reg:U0_timer_reg                                               ;              ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |top|fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE                                                                                                                                                                                                                                                           ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+; Name                                ; fifo_STATE.fifo_READ_ERR_STATE ; fifo_STATE.fifo_EMPTY_STATE ; fifo_STATE.fifo_READ_STATE ; fifo_STATE.fifo_WRITE_ERR_STATE ; fifo_STATE.fifo_FULL_STATE ; fifo_STATE.fifo_WRITE_STATE ; fifo_STATE.fifo_INIT_READ_ERR_STATE ; fifo_STATE.fifo_INIT_STATE ; fifo_STATE.fifo_NOP_STATE ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+; fifo_STATE.fifo_INIT_STATE          ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 0                          ; 0                         ;
+; fifo_STATE.fifo_INIT_READ_ERR_STATE ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 1                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_WRITE_STATE         ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 1                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_FULL_STATE          ; 0                              ; 0                           ; 0                          ; 0                               ; 1                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_WRITE_ERR_STATE     ; 0                              ; 0                           ; 0                          ; 1                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_READ_STATE          ; 0                              ; 0                           ; 1                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_EMPTY_STATE         ; 0                              ; 1                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_READ_ERR_STATE      ; 1                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_NOP_STATE           ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 1                         ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |top|fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE                                                                                                                                                                                                                                                           ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+; Name                                ; fifo_STATE.fifo_READ_ERR_STATE ; fifo_STATE.fifo_EMPTY_STATE ; fifo_STATE.fifo_READ_STATE ; fifo_STATE.fifo_WRITE_ERR_STATE ; fifo_STATE.fifo_FULL_STATE ; fifo_STATE.fifo_WRITE_STATE ; fifo_STATE.fifo_INIT_READ_ERR_STATE ; fifo_STATE.fifo_INIT_STATE ; fifo_STATE.fifo_NOP_STATE ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+; fifo_STATE.fifo_INIT_STATE          ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 0                          ; 0                         ;
+; fifo_STATE.fifo_INIT_READ_ERR_STATE ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 1                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_WRITE_STATE         ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 1                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_FULL_STATE          ; 0                              ; 0                           ; 0                          ; 0                               ; 1                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_WRITE_ERR_STATE     ; 0                              ; 0                           ; 0                          ; 1                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_READ_STATE          ; 0                              ; 0                           ; 1                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_EMPTY_STATE         ; 0                              ; 1                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_READ_ERR_STATE      ; 1                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_NOP_STATE           ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 1                         ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |top|fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE                                                                                                                                                                                                                                                           ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+; Name                                ; fifo_STATE.fifo_READ_ERR_STATE ; fifo_STATE.fifo_EMPTY_STATE ; fifo_STATE.fifo_READ_STATE ; fifo_STATE.fifo_WRITE_ERR_STATE ; fifo_STATE.fifo_FULL_STATE ; fifo_STATE.fifo_WRITE_STATE ; fifo_STATE.fifo_INIT_READ_ERR_STATE ; fifo_STATE.fifo_INIT_STATE ; fifo_STATE.fifo_NOP_STATE ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+; fifo_STATE.fifo_INIT_STATE          ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 0                          ; 0                         ;
+; fifo_STATE.fifo_INIT_READ_ERR_STATE ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 1                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_WRITE_STATE         ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 1                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_FULL_STATE          ; 0                              ; 0                           ; 0                          ; 0                               ; 1                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_WRITE_ERR_STATE     ; 0                              ; 0                           ; 0                          ; 1                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_READ_STATE          ; 0                              ; 0                           ; 1                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_EMPTY_STATE         ; 0                              ; 1                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_READ_ERR_STATE      ; 1                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_NOP_STATE           ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 1                         ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |top|fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE                                                                                                                                                                                                                                                           ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+; Name                                ; fifo_STATE.fifo_READ_ERR_STATE ; fifo_STATE.fifo_EMPTY_STATE ; fifo_STATE.fifo_READ_STATE ; fifo_STATE.fifo_WRITE_ERR_STATE ; fifo_STATE.fifo_FULL_STATE ; fifo_STATE.fifo_WRITE_STATE ; fifo_STATE.fifo_INIT_READ_ERR_STATE ; fifo_STATE.fifo_INIT_STATE ; fifo_STATE.fifo_NOP_STATE ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+; fifo_STATE.fifo_INIT_STATE          ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 0                          ; 0                         ;
+; fifo_STATE.fifo_INIT_READ_ERR_STATE ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 1                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_WRITE_STATE         ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 1                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_FULL_STATE          ; 0                              ; 0                           ; 0                          ; 0                               ; 1                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_WRITE_ERR_STATE     ; 0                              ; 0                           ; 0                          ; 1                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_READ_STATE          ; 0                              ; 0                           ; 1                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_EMPTY_STATE         ; 0                              ; 1                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_READ_ERR_STATE      ; 1                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 0                         ;
+; fifo_STATE.fifo_NOP_STATE           ; 0                              ; 0                           ; 0                          ; 0                               ; 0                          ; 0                           ; 0                                   ; 1                          ; 1                         ;
++-------------------------------------+--------------------------------+-----------------------------+----------------------------+---------------------------------+----------------------------+-----------------------------+-------------------------------------+----------------------------+---------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                        ;
++--------------------------------------------------------------+----------------------------------------------------------------------------+
+; Register name                                                ; Reason for Removal                                                         ;
++--------------------------------------------------------------+----------------------------------------------------------------------------+
+; timer:U2_timer|timer_reg:U0_timer_reg|CUR_STATE[5..7]        ; Stuck at GND due to stuck port data_in                                     ;
+; timer:U2_timer|timer_reg:U0_timer_reg|CUR_STATE[1]           ; Merged with timer:U2_timer|timer_counter:U2_timer_counter|counter_state[1] ;
+; timer:U2_timer|timer_reg:U0_timer_reg|CUR_STATE[0]           ; Merged with timer:U2_timer|timer_counter:U2_timer_counter|counter_state[0] ;
+; timer:U2_timer|timer_reg:U0_timer_reg|CUR_STATE[4]           ; Merged with timer:U2_timer|timer_master:U1_timer_master|master_state[2]    ;
+; timer:U2_timer|timer_reg:U0_timer_reg|CUR_STATE[3]           ; Merged with timer:U2_timer|timer_master:U1_timer_master|master_state[1]    ;
+; timer:U2_timer|timer_reg:U0_timer_reg|CUR_STATE[2]           ; Merged with timer:U2_timer|timer_master:U1_timer_master|master_state[0]    ;
+; bus:U0_bus|bus_mx_S1                                         ; Merged with fifo_top:U1_fifo_top|cur_sel                                   ;
+; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE~4               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE~5               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE~6               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE~4               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE~5               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE~6               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE~4               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE~5               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE~6               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE~4               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE~5               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE~6               ; Lost fanout                                                                ;
+; fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE.fifo_INIT_STATE ; Merged with fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_STATE   ;
+; fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE.fifo_INIT_STATE ; Merged with fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_STATE   ;
+; fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE.fifo_INIT_STATE ; Merged with fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE.fifo_INIT_STATE   ;
+; Total Number of Removed Registers = 24                       ;                                                                            ;
++--------------------------------------------------------------+----------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 409   ;
+; Number of registers using Synchronous Clear  ; 3     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 153   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 276   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------------------------------------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                                              ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------------------------------------------------+----------------------------+
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U3_fifo|data_count[1]    ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U0_fifo|data_count[2]    ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U1_fifo|data_count[2]    ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U2_fifo|data_count[0]    ;                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |top|bus:U0_bus|bus_mx_S2                               ;                            ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U3_fifo|dout[6]          ;                            ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U0_fifo|dout[1]          ;                            ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U1_fifo|dout[1]          ;                            ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U2_fifo|dout[1]          ;                            ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; |top|bus:U0_bus|mx2_addr:U7_M_din_mx2|y[0]              ;                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; |top|bus:U0_bus|mx2_addr:U2_S_addr_mx2|y[2]             ;                            ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; |top|timer:U2_timer|timer_reg:U0_timer_reg|NEXT_S_dout  ;                            ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U3_fifo|NEXT_tail[1]     ;                            ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U0_fifo|NEXT_tail[2]     ;                            ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U1_fifo|NEXT_tail[2]     ;                            ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U2_fifo|NEXT_tail[2]     ;                            ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U3_fifo|NEXT_head[0]     ;                            ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U0_fifo|NEXT_head[0]     ;                            ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U1_fifo|NEXT_head[1]     ;                            ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; |top|fifo_top:U1_fifo_top|fifo:U2_fifo|NEXT_head[0]     ;                            ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; |top|timer:U2_timer|timer_reg:U0_timer_reg|NEXT_S_dout  ;                            ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; |top|timer:U2_timer|timer_counter:U2_timer_counter|Mux5 ;                            ;
+; 8:1                ; 18 bits   ; 90 LEs        ; 72 LEs               ; 18 LEs                 ; |top|fifo_top:U1_fifo_top|ot_mx2:U3_1_ot_mx2|y[2]       ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------------------------------------------------+----------------------------+
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: bus:U0_bus|Arbitrator:U0_Arbitrator ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; M0GRANT        ; 0     ; Unsigned Binary                                         ;
+; M1GRANT        ; 1     ; Unsigned Binary                                         ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fifo_top:U1_fifo_top|fifo:U0_fifo ;
++--------------------------+-------+---------------------------------------------+
+; Parameter Name           ; Value ; Type                                        ;
++--------------------------+-------+---------------------------------------------+
+; fifo_INIT_STATE          ; 0000  ; Unsigned Binary                             ;
+; fifo_INIT_READ_ERR_STATE ; 0001  ; Unsigned Binary                             ;
+; fifo_WRITE_STATE         ; 0010  ; Unsigned Binary                             ;
+; fifo_FULL_STATE          ; 0011  ; Unsigned Binary                             ;
+; fifo_WRITE_ERR_STATE     ; 0100  ; Unsigned Binary                             ;
+; fifo_READ_STATE          ; 0101  ; Unsigned Binary                             ;
+; fifo_EMPTY_STATE         ; 0110  ; Unsigned Binary                             ;
+; fifo_READ_ERR_STATE      ; 0111  ; Unsigned Binary                             ;
+; fifo_NOP_STATE           ; 1000  ; Unsigned Binary                             ;
++--------------------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fifo_top:U1_fifo_top|fifo:U1_fifo ;
++--------------------------+-------+---------------------------------------------+
+; Parameter Name           ; Value ; Type                                        ;
++--------------------------+-------+---------------------------------------------+
+; fifo_INIT_STATE          ; 0000  ; Unsigned Binary                             ;
+; fifo_INIT_READ_ERR_STATE ; 0001  ; Unsigned Binary                             ;
+; fifo_WRITE_STATE         ; 0010  ; Unsigned Binary                             ;
+; fifo_FULL_STATE          ; 0011  ; Unsigned Binary                             ;
+; fifo_WRITE_ERR_STATE     ; 0100  ; Unsigned Binary                             ;
+; fifo_READ_STATE          ; 0101  ; Unsigned Binary                             ;
+; fifo_EMPTY_STATE         ; 0110  ; Unsigned Binary                             ;
+; fifo_READ_ERR_STATE      ; 0111  ; Unsigned Binary                             ;
+; fifo_NOP_STATE           ; 1000  ; Unsigned Binary                             ;
++--------------------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fifo_top:U1_fifo_top|fifo:U2_fifo ;
++--------------------------+-------+---------------------------------------------+
+; Parameter Name           ; Value ; Type                                        ;
++--------------------------+-------+---------------------------------------------+
+; fifo_INIT_STATE          ; 0000  ; Unsigned Binary                             ;
+; fifo_INIT_READ_ERR_STATE ; 0001  ; Unsigned Binary                             ;
+; fifo_WRITE_STATE         ; 0010  ; Unsigned Binary                             ;
+; fifo_FULL_STATE          ; 0011  ; Unsigned Binary                             ;
+; fifo_WRITE_ERR_STATE     ; 0100  ; Unsigned Binary                             ;
+; fifo_READ_STATE          ; 0101  ; Unsigned Binary                             ;
+; fifo_EMPTY_STATE         ; 0110  ; Unsigned Binary                             ;
+; fifo_READ_ERR_STATE      ; 0111  ; Unsigned Binary                             ;
+; fifo_NOP_STATE           ; 1000  ; Unsigned Binary                             ;
++--------------------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fifo_top:U1_fifo_top|fifo:U3_fifo ;
++--------------------------+-------+---------------------------------------------+
+; Parameter Name           ; Value ; Type                                        ;
++--------------------------+-------+---------------------------------------------+
+; fifo_INIT_STATE          ; 0000  ; Unsigned Binary                             ;
+; fifo_INIT_READ_ERR_STATE ; 0001  ; Unsigned Binary                             ;
+; fifo_WRITE_STATE         ; 0010  ; Unsigned Binary                             ;
+; fifo_FULL_STATE          ; 0011  ; Unsigned Binary                             ;
+; fifo_WRITE_ERR_STATE     ; 0100  ; Unsigned Binary                             ;
+; fifo_READ_STATE          ; 0101  ; Unsigned Binary                             ;
+; fifo_EMPTY_STATE         ; 0110  ; Unsigned Binary                             ;
+; fifo_READ_ERR_STATE      ; 0111  ; Unsigned Binary                             ;
+; fifo_NOP_STATE           ; 1000  ; Unsigned Binary                             ;
++--------------------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: timer:U2_timer|timer_reg:U0_timer_reg ;
++--------------------+-------+-------------------------------------------------------+
+; Parameter Name     ; Value ; Type                                                  ;
++--------------------+-------+-------------------------------------------------------+
+; CNT_EN_IDLE_STATE  ; 0     ; Unsigned Binary                                       ;
+; CNT_EN_READ_REQ    ; 1     ; Unsigned Binary                                       ;
+; INTRRT_IDLE_STATE  ; 0     ; Unsigned Binary                                       ;
+; INTRRT_CLEAR_STATE ; 1     ; Unsigned Binary                                       ;
++--------------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: timer:U2_timer|timer_master:U1_timer_master ;
++-----------------------+-------+----------------------------------------------------------+
+; Parameter Name        ; Value ; Type                                                     ;
++-----------------------+-------+----------------------------------------------------------+
+; master_IDLE_STATE     ; 000   ; Unsigned Binary                                          ;
+; master_READ_REQ_STATE ; 001   ; Unsigned Binary                                          ;
+; master_READ_GRA_STATE ; 010   ; Unsigned Binary                                          ;
+; master_READ_DEL_STATE ; 011   ; Unsigned Binary                                          ;
+; master_CNT_EN_STATE   ; 100   ; Unsigned Binary                                          ;
++-----------------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: timer:U2_timer|timer_counter:U2_timer_counter ;
++------------------------+-------+-----------------------------------------------------------+
+; Parameter Name         ; Value ; Type                                                      ;
++------------------------+-------+-----------------------------------------------------------+
+; counter_IDLE_STATE     ; 00    ; Unsigned Binary                                           ;
+; counter_COUNT_STATE    ; 01    ; Unsigned Binary                                           ;
+; counter_INTRRUPT_STATE ; 10    ; Unsigned Binary                                           ;
++------------------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U4_master_state2_mx2" ;
++------+-------+----------+----------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                    ;
++------+-------+----------+----------------------------------------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                                               ;
+; d1   ; Input ; Info     ; Stuck at VCC                                                               ;
++------+-------+----------+----------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U3_master_state1_mx2" ;
++------+-------+----------+----------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                    ;
++------+-------+----------+----------------------------------------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                                               ;
+; d1   ; Input ; Info     ; Stuck at VCC                                                               ;
++------+-------+----------+----------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U2_master_state0_mx2" ;
++------+-------+----------+----------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                    ;
++------+-------+----------+----------------------------------------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                                               ;
+; d1   ; Input ; Info     ; Stuck at VCC                                                               ;
++------+-------+----------+----------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U1_counter_state1_mx2" ;
++------+-------+----------+-----------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                     ;
++------+-------+----------+-----------------------------------------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                                                ;
+; d1   ; Input ; Info     ; Stuck at VCC                                                                ;
++------+-------+----------+-----------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U0_counter_state0_mx2" ;
++------+-------+----------+-----------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                     ;
++------+-------+----------+-----------------------------------------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                                                ;
+; d1   ; Input ; Info     ; Stuck at VCC                                                                ;
++------+-------+----------+-----------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U8_rd_err_last_mx" ;
++------+-------+----------+----------------------------------------------+
+; Port ; Type  ; Severity ; Details                                      ;
++------+-------+----------+----------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                 ;
+; d1   ; Input ; Info     ; Stuck at VCC                                 ;
++------+-------+----------+----------------------------------------------+
+
+
++------------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U7_rd_ack_last_mx" ;
++------+-------+----------+----------------------------------------------+
+; Port ; Type  ; Severity ; Details                                      ;
++------+-------+----------+----------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                 ;
+; d1   ; Input ; Info     ; Stuck at VCC                                 ;
++------+-------+----------+----------------------------------------------+
+
+
++------------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U6_wr_err_last_mx" ;
++------+-------+----------+----------------------------------------------+
+; Port ; Type  ; Severity ; Details                                      ;
++------+-------+----------+----------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                 ;
+; d1   ; Input ; Info     ; Stuck at VCC                                 ;
++------+-------+----------+----------------------------------------------+
+
+
++------------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U5_wr_ack_last_mx" ;
++------+-------+----------+----------------------------------------------+
+; Port ; Type  ; Severity ; Details                                      ;
++------+-------+----------+----------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                 ;
+; d1   ; Input ; Info     ; Stuck at VCC                                 ;
++------+-------+----------+----------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U4_empty_last_mx" ;
++------+-------+----------+---------------------------------------------+
+; Port ; Type  ; Severity ; Details                                     ;
++------+-------+----------+---------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                ;
+; d1   ; Input ; Info     ; Stuck at VCC                                ;
++------+-------+----------+---------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U3_full_last_mx" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at VCC                               ;
++------+-------+----------+--------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U2_fifo_cnt_last_mx" ;
++------+-------+----------+----------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                            ;
++------+-------+----------+----------------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                       ;
+; d1   ; Input ; Info     ; Stuck at VCC                                       ;
++------+-------+----------+----------------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U1_dout_last_mx" ;
++------+-------+----------+-----------------------------------------------+
+; Port ; Type  ; Severity ; Details                                       ;
++------+-------+----------+-----------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                  ;
+; d1   ; Input ; Info     ; Stuck at VCC                                  ;
++------+-------+----------+-----------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_rd_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_rd_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_rd_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_rd_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_rd_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_rd_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_rd_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_rd_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_rd_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_rd_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_rd_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_rd_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_rd_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_rd_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_wr_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_wr_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_wr_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_wr_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_wr_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_wr_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_wr_err_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_wr_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_wr_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_wr_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_wr_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_wr_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_wr_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d1   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_wr_ack_mx2" ;
++------+-------+----------+--------------------------------------------+
+; Port ; Type  ; Severity ; Details                                    ;
++------+-------+----------+--------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                               ;
++------+-------+----------+--------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_empty_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_empty_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_empty_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_empty_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_empty_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_empty_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_empty_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_8_full_mx2" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                             ;
+; d1   ; Input ; Info     ; Stuck at GND                             ;
++------+-------+----------+------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_7_full_mx2" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                             ;
+; d1   ; Input ; Info     ; Stuck at GND                             ;
++------+-------+----------+------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_6_full_mx2" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                             ;
+; d1   ; Input ; Info     ; Stuck at GND                             ;
++------+-------+----------+------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_5_full_mx2" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                             ;
+; d1   ; Input ; Info     ; Stuck at GND                             ;
++------+-------+----------+------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_4_full_mx2" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                             ;
+; d1   ; Input ; Info     ; Stuck at GND                             ;
++------+-------+----------+------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_3_full_mx2" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; d1   ; Input ; Info     ; Stuck at GND                             ;
++------+-------+----------+------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U0_1_full_mx2" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                             ;
++------+-------+----------+------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_8_cnt_mx2" ;
++------+-------+----------+---------------------------------------------+
+; Port ; Type  ; Severity ; Details                                     ;
++------+-------+----------+---------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                ;
+; d1   ; Input ; Info     ; Stuck at GND                                ;
++------+-------+----------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_7_cnt_mx2" ;
++------+-------+----------+---------------------------------------------+
+; Port ; Type  ; Severity ; Details                                     ;
++------+-------+----------+---------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                ;
+; d1   ; Input ; Info     ; Stuck at GND                                ;
++------+-------+----------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_6_cnt_mx2" ;
++------+-------+----------+---------------------------------------------+
+; Port ; Type  ; Severity ; Details                                     ;
++------+-------+----------+---------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                ;
+; d1   ; Input ; Info     ; Stuck at GND                                ;
++------+-------+----------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_5_cnt_mx2" ;
++------+-------+----------+---------------------------------------------+
+; Port ; Type  ; Severity ; Details                                     ;
++------+-------+----------+---------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                ;
+; d1   ; Input ; Info     ; Stuck at GND                                ;
++------+-------+----------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_4_cnt_mx2" ;
++------+-------+----------+---------------------------------------------+
+; Port ; Type  ; Severity ; Details                                     ;
++------+-------+----------+---------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                ;
+; d1   ; Input ; Info     ; Stuck at GND                                ;
++------+-------+----------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_3_cnt_mx2" ;
++------+-------+----------+---------------------------------------------+
+; Port ; Type  ; Severity ; Details                                     ;
++------+-------+----------+---------------------------------------------+
+; d1   ; Input ; Info     ; Stuck at GND                                ;
++------+-------+----------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|cnt_mx2:U0_1_cnt_mx2" ;
++------+-------+----------+---------------------------------------------+
+; Port ; Type  ; Severity ; Details                                     ;
++------+-------+----------+---------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                                ;
++------+-------+----------+---------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_8_ot_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_7_ot_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_6_ot_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_5_ot_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_4_ot_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_3_ot_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d1   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|ot_mx2:U0_1_ot_mx2" ;
++------+-------+----------+-------------------------------------------+
+; Port ; Type  ; Severity ; Details                                   ;
++------+-------+----------+-------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                              ;
++------+-------+----------+-------------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_mx2:U0_rf_mx_we" ;
++------+-------+----------+----------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                  ;
++------+-------+----------+----------------------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at VCC                                             ;
+; d1   ; Input ; Info     ; Stuck at GND                                             ;
++------+-------+----------+----------------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U11_sel_mx2" ;
++------+-------+----------+----------------------------------------+
+; Port ; Type  ; Severity ; Details                                ;
++------+-------+----------+----------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                           ;
++------+-------+----------+----------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U00_sel_mx2" ;
++------+-------+----------+----------------------------------------+
+; Port ; Type  ; Severity ; Details                                ;
++------+-------+----------+----------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                           ;
++------+-------+----------+----------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U11_write_mx2" ;
++------+-------+----------+------------------------------------------+
+; Port ; Type  ; Severity ; Details                                  ;
++------+-------+----------+------------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                             ;
+; d1   ; Input ; Info     ; Stuck at VCC                             ;
++------+-------+----------+------------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "fifo_top:U1_fifo_top|mx2:U00_read_mx2" ;
++------+-------+----------+-----------------------------------------+
+; Port ; Type  ; Severity ; Details                                 ;
++------+-------+----------+-----------------------------------------+
+; d0   ; Input ; Info     ; Stuck at VCC                            ;
+; d1   ; Input ; Info     ; Stuck at GND                            ;
++------+-------+----------+-----------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "bus:U0_bus|mx2_addr:U6_M_din_mx2" ;
++------+-------+----------+------------------------------------+
+; Port ; Type  ; Severity ; Details                            ;
++------+-------+----------+------------------------------------+
+; d1   ; Input ; Info     ; Stuck at GND                       ;
++------+-------+----------+------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "bus:U0_bus|mx2_addr:U5_M_din_mx2" ;
++------+-------+----------+------------------------------------+
+; Port ; Type  ; Severity ; Details                            ;
++------+-------+----------+------------------------------------+
+; d0   ; Input ; Info     ; Stuck at GND                       ;
++------+-------+----------+------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:07     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 11.0 Build 208 07/03/2011 Service Pack 1 SJ Web Edition
+    Info: Processing started: Wed Dec 07 15:12:14 2011
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off top -c top
+Warning: Parallel compilation is not licensed and has been disabled
+Info: Found 2 design units, including 2 entities, in source file timer_reg.v
+    Info: Found entity 1: timer_reg
+    Info: Found entity 2: timer_reg_mx2
+Info: Found 1 design units, including 1 entities, in source file timer_master.v
+    Info: Found entity 1: timer_master
+Info: Found 1 design units, including 1 entities, in source file timer_counter.v
+    Info: Found entity 1: timer_counter
+Info: Found 1 design units, including 1 entities, in source file timer.v
+    Info: Found entity 1: timer
+Info: Found 8 design units, including 8 entities, in source file fifo_top.v
+    Info: Found entity 1: fifo_top
+    Info: Found entity 2: decoder
+    Info: Found entity 3: _andcn
+    Info: Found entity 4: _andcn4
+    Info: Found entity 5: _andcn8
+    Info: Found entity 6: cnt_mx2
+    Info: Found entity 7: ot_mx2
+    Info: Found entity 8: mx2
+Info: Found 4 design units, including 4 entities, in source file fifo.v
+    Info: Found entity 1: fifo
+    Info: Found entity 2: register_file
+    Info: Found entity 3: fifo_mx2
+    Info: Found entity 4: fifo_and1
+Info: Found 1 design units, including 1 entities, in source file top.v
+    Info: Found entity 1: top
+Info: Found 3 design units, including 3 entities, in source file bus.v
+    Info: Found entity 1: bus
+    Info: Found entity 2: mx2_addr
+    Info: Found entity 3: mx2_bus
+Info: Found 1 design units, including 1 entities, in source file arbitrator.v
+    Info: Found entity 1: Arbitrator
+Info: Found 1 design units, including 1 entities, in source file address_decoder.v
+    Info: Found entity 1: Address_decoder
+Info: Elaborating entity "top" for the top level hierarchy
+Info: Elaborating entity "bus" for hierarchy "bus:U0_bus"
+Info: Elaborating entity "Arbitrator" for hierarchy "bus:U0_bus|Arbitrator:U0_Arbitrator"
+Info: Elaborating entity "mx2_bus" for hierarchy "bus:U0_bus|mx2_bus:U1_S_wr_mx2"
+Info: Elaborating entity "mx2_addr" for hierarchy "bus:U0_bus|mx2_addr:U2_S_addr_mx2"
+Info: Elaborating entity "Address_decoder" for hierarchy "bus:U0_bus|Address_decoder:U4_addr_decoder"
+Info: Elaborating entity "fifo_top" for hierarchy "fifo_top:U1_fifo_top"
+Info: Elaborating entity "mx2" for hierarchy "fifo_top:U1_fifo_top|mx2:U00_read_mx2"
+Info: Elaborating entity "decoder" for hierarchy "fifo_top:U1_fifo_top|decoder:U0_decoder"
+Info: Elaborating entity "_andcn" for hierarchy "fifo_top:U1_fifo_top|_andcn:U1_wr_and"
+Info: Elaborating entity "fifo" for hierarchy "fifo_top:U1_fifo_top|fifo:U0_fifo"
+Info: Elaborating entity "register_file" for hierarchy "fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file"
+Info: Elaborating entity "fifo_and1" for hierarchy "fifo_top:U1_fifo_top|fifo:U0_fifo|register_file:U0_register_file|fifo_and1:U0_rf_we"
+Info: Elaborating entity "fifo_mx2" for hierarchy "fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_mx2:U0_rf_mx_we"
+Info: Elaborating entity "ot_mx2" for hierarchy "fifo_top:U1_fifo_top|ot_mx2:U0_1_ot_mx2"
+Info: Elaborating entity "cnt_mx2" for hierarchy "fifo_top:U1_fifo_top|cnt_mx2:U0_1_cnt_mx2"
+Info: Elaborating entity "_andcn8" for hierarchy "fifo_top:U1_fifo_top|_andcn8:U1_dout_last_and"
+Info: Elaborating entity "_andcn4" for hierarchy "fifo_top:U1_fifo_top|_andcn4:U2_fifo_cnt_last_and"
+Info: Elaborating entity "timer" for hierarchy "timer:U2_timer"
+Info: Elaborating entity "timer_reg" for hierarchy "timer:U2_timer|timer_reg:U0_timer_reg"
+Info: Elaborating entity "timer_reg_mx2" for hierarchy "timer:U2_timer|timer_reg:U0_timer_reg|timer_reg_mx2:U0_counter_state0_mx2"
+Info: Elaborating entity "timer_master" for hierarchy "timer:U2_timer|timer_master:U1_timer_master"
+Info: Elaborating entity "timer_counter" for hierarchy "timer:U2_timer|timer_counter:U2_timer_counter"
+Info: 12 registers lost all their fanouts during netlist optimizations. The first 12 are displayed below.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE~4" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE~5" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U3_fifo|fifo_STATE~6" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE~4" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE~5" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U2_fifo|fifo_STATE~6" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE~4" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE~5" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U1_fifo|fifo_STATE~6" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE~4" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE~5" lost all its fanouts during netlist optimizations.
+    Info: Register "fifo_top:U1_fifo_top|fifo:U0_fifo|fifo_STATE~6" lost all its fanouts during netlist optimizations.
+Info: Generated suppressed messages file C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/top.map.smsg
+Info: Generating hard_block partition "hard_block:auto_generated_inst"
+Info: Implemented 976 device resources after synthesis - the final resource count might be different
+    Info: Implemented 20 input pins
+    Info: Implemented 20 output pins
+    Info: Implemented 936 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 272 megabytes
+    Info: Processing ended: Wed Dec 07 15:12:22 2011
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:07
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Ba-EK/Desktop/Verilog/TheRealProjecT/TOP/top.map.smsg.
+
+

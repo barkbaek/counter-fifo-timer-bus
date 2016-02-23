@@ -248,11 +248,11 @@
 ###### - Slave 1 은 0x20 ~ 0x2F 사이의 address를 자신의 memory map으로 가진다. (Slave 1 = timer)
 <br>
 ##### 5-4-3. Functional Description
-###### - Master는 bus를 통해 data를 transfer하고자 	  할 때 자신에게 해당하는 request signal (M	  0_req or M1_Req)를 1로 하고 그에 대한 확	  인으로 grant signal(M0_grant or M1_grant)	  을 받은 후 data transfer를 할 수 있다. 여기	  서 M0는 testbench를 의미하고 M1은 timer	  를 의미한다.
+###### - Master는 bus를 통해 data를 transfer하고자 할 때 자신에게 해당하는 request signal (M0_req or M1_Req)를 1로 하고 그에 대한 확인으로 grant signal(M0_grant or M1_grant)을 받은 후 data transfer를 할 수 있다. 여기서 M0는 testbench를 의미하고 M1은 timer를 의미한다.
 <br>
 ##### 5-4-4. Additional Information
-###### - 하나의 master가 request를 요청하여 grant	  를 받고 있으면, 다른 master에서 request를 	  요청하여도 request가 유지되는 동안은 gra	  nt를 뺏기지 않는다.
-###### - 두 개의 master가 request를 요청하지 않다	  가 동시에 요청하면 grant를 받고 있던 Ma	  ster 0가 grant를 유지한다.
+###### - 하나의 master가 request를 요청하여 grant 를 받고 있으면, 다른 master에서 request를  요청하여도 request가 유지되는 동안은 grant를 뺏기지 않는다.
+###### - 두 개의 master가 request를 요청하지 않다가 동시에 요청하면 grant를 받고 있던 Master 0가 grant를 유지한다.
 <br>
 #### 5.5. top
 ###### - 표 2-6. Input/Output Description (TOP) 참고
@@ -261,12 +261,12 @@
 ###### - TOP은 FIFO TOP, TIMER, BUS를 instance 하여 연결한 component이다.
 <br>
 ##### 5-5-2. Features
-###### - 외부에서 master 0 interface를 사용하여 FI	  FO TOP과 TIMER를 제어할 수 있다.
-###### - FIFO 를 제어할 때 fifo_cnt, fifo_flag를 통해 	  해당 FIFO의 출력을 확인할 수 있다.
-###### - Timer의 count가 끝나면 interrupt output 	  port(timer_interrupt)를 통해 interrupt를 받	  을 수 있다.	
+###### - 외부에서 master 0 interface를 사용하여 FIFO TOP과 TIMER를 제어할 수 있다.
+###### - FIFO 를 제어할 때 fifo_cnt, fifo_flag를 통해 해당 FIFO의 출력을 확인할 수 있다.
+###### - Timer의 count가 끝나면 interrupt output port(timer_interrupt)를 통해 interrupt를 받을 수 있다.	
 <br>
 ##### 5-5-3. Additional Information
-###### - TOP에서 instance 하는 BUS, FIFO TOP, 		  TIMER의 instance 이름은 각각 ‘U0_bus’, ‘U	   1_fifo_top’, ‘U2_timer’ 다.
+###### - TOP에서 instance 하는 BUS, FIFO TOP, TIMER의 instance 이름은 각각 ‘U0_bus’, ‘U1_fifo_top’, ‘U2_timer’ 다.
 <br>
 <br>
 <br>
@@ -275,263 +275,153 @@
 ###### - 1-2. State Transition Diagram - Synchronous FIFO 참고.
 <br>
 ##### 6-1-1. 구현한 내부 module 소개
-###### - 최상위 module 이름은 specification에서 주	  어진대로 'fifo'이다.
-###### - 하위 module은 'register_file', 'fifo_mx2', 		  'fifo_and1'이 있다.
-###### - 'fifo'의 구현은 State Transition Diagram을 	  통해 Moore FSM방식으로 설계하였다. Com	  binational Logic(Next_fifo_STATE와 Output L	  ogic)과 Sequential Logic으로 나누어 설계하	  였고, Moore FSM 방식이므로 Next_fifo_STA	  TE은 입력과 현재 STATE 상태에 의해 출력	  이 결정되며 Output Logic은 입력에 상관없	  이 오직 현재 STATE 상태에 의해 출력이 결	  정된다.
-
-###### - 3bits의 head와 tail을 통해 Circular Queue 	  방식으로 data가 저장되고 출력된다. 총 8	  bits bandwidth의 8개의 data가 저장될 수 	  있다. write operation이 요청되면 저장된 da	  ta의 수가 7개 이하일 때 input port인 din의 	  값이 레지스터에 저장된다. 이 때, tail은 1 	  증가한다. Circular Que 방식이기 때문에 만	  약 tail의 값이 7이라면 0이 된다. data_cou	  nt는 1 증가한다.
-	   read operation이 요청되면 fifo 내부에 저	  장된 data가 존재할 때 (최소 data_count가 	  1일 때) output port인 dout을 통해 가장 처	  음에 저장된 data부터 차례대로 빠져나간다.
-	  이 때, head는 1 증가한다. Circular Que 방	  식이기 때문에 만약 head의 값이 7이라면 0	  이 된다. data_count는 1 감소한다.
-
-###### module 'register file' 의 port는 input port	  로 clk, wAddr[2:0], wData[7:0], we, no_full, 	  rAddr[2:0]이 있고 output port는 rData[7:0] 	  가 있다. we_w의 값이 1일 때 wAddr의 주	  소에 따라 각각의 register에 wData의 값이 	  저장된다. module 'fifo'에서 status flag인 	  full의 값이 0이고 write operation을 요청하	  는 신호를 나타내는 wr_en의 값이 1일 때 we_w의 값이 1이 된다. we_w의 값이 1이면 	  wData의 값이 NEXT_register에 먼저 저장되	  고 클록이 상승에지일 때 NEXT_register에 	  저장된 data값이 해당 register에 저장된다. 	  wAddr은 module 'fifo'의 NEXT_tail의 값이	  고, wData는 fifo에 입력으로 들어오는 din의 	  값이며, rAddr은 NEXT_head의 값이다. rA	  ddr에 따라 각각 register의 값이 rData로 출	  력된다. rData의 값은 module 'fifo'에서 read 	  operation 요청이 들어왔을 때 data를 읽을 	  수 있는 조건이 충족되면 module 'fifo'의 	  output port인 dout을 통해 출력된다.
-
-
-###### - 해당 module 'fifo'의 fifo_STATE에 대해 살펴	  보겠다. (※ 참고 : 1-2. State Transition   Di	  agram - Synchronous FIFO )
-	  fifo_STATE은 총 9개로 나누었는데 각각 	  	 fifo_INIT_STATE, fIfo_INIT_READ_ERR_STATE,   	  fifo_WRITE_STATE, fifo_FULL_STATE,     fifo_	  WRITE_ERR_STATE, fifo_READ_STATE, fifo_EM    	  PTY_STATE, fifo_READ_ERR_STATE, fifo_NOP	  _STATE 이다.
-
+###### - 최상위 module 이름은 specification에서 주어진대로 'fifo'이다.
+###### - 하위 module은 'register_file', 'fifo_mx2', 'fifo_and1'이 있다.
+###### - 'fifo'의 구현은 State Transition Diagram을 통해 Moore FSM방식으로 설계하였다. Combinational Logic(Next_fifo_STATE와 Output Logic)과 Sequential Logic으로 나누어 설계하였고, Moore FSM 방식이므로 Next_fifo_STATE은 입력과 현재 STATE 상태에 의해 출력이 결정되며 Output Logic은 입력에 상관없이 오직 현재 STATE 상태에 의해 출력이 결정된다.
+###### - 3bits의 head와 tail을 통해 Circular Queue 방식으로 data가 저장되고 출력된다. 총 8bits bandwidth의 8개 data가 저장될 수 있다. write operation이 요청되면 저장된 data 수가 7개 이하일 때 input port인 din의 값이 레지스터에 저장된다. 이 때, tail은 1 증가한다. Circular Queue 방식이기 때문에 만약 tail의 값이 7이라면 0이 된다. data_count는 1 증가한다. read operation이 요청되면 fifo 내부에 저장된 data가 존재할 때 (최소 data_count가 1일 때) output port인 dout을 통해 가장 처음에 저장된 data부터 차례대로 빠져나간다. 이때, head는 1 증가한다. Circular Queue 방식이기 때문에 만약 head의 값이 7이라면 0이 된다. data_count는 1 감소한다.
+###### module 'register file' 의 port는 input port로 clk, wAddr[2:0], wData[7:0], we, no_full, rAddr[2:0]이 있고 output port는 rData[7:0]가 있다. we_w의 값이 1일 때 wAddr의 주소에 따라 각각의 register에 wData의 값이 저장된다. module 'fifo'에서 status flag인 full의 값이 0이고 write operation을 요청하는 신호를 나타내는 wr_en의 값이 1일 때 we_w의 값이 1이 된다. we_w의 값이 1이면 wData의 값이 NEXT_register에 먼저 저장되고 클록이 상승에지일 때 NEXT_register에 저장된 data값이 해당 register에 저장된다. wAddr은 module 'fifo'의 NEXT_tail의 값이고, wData는 fifo에 입력으로 들어오는 din의 값이며, rAddr은 NEXT_head의 값이다. rAddr에 따라 각각 register의 값이 rData로 출력된다. rData의 값은 module 'fifo'에서 read operation 요청이 들어왔을 때 data를 읽을 수 있는 조건이 충족되면 module 'fifo'의 output port인 dout을 통해 출력된다.
+###### - 해당 module 'fifo'의 fifo_STATE에 대해 살펴 보겠다. (※ 참고 : 1-2. State Transition   Diagram - Synchronous FIFO ) fifo_STATE은 총 9개로 나누었는데 각각 fifo_INIT_STATE, fifo_INIT_READ_ERR_STATE, fifo_WRITE_STATE, fifo_FULL_STATE, fifo_WRITE_ERR_STATE, fifo_READ_STATE, fifo_EMPTY_STATE, fifo_READ_ERR_STATE, fifo_NOP_STATE 이다.
 <br>
 ##### 6-1-2. fifo_STATE 소개
 ###### <b>- 6-1-2-1. fifo_INIT_STATE</b>
-###### - fifo_INIT_STATE 은 가장 첫 번째 STATE이다. 	  만약 reset_n의 값이 0이면 어떠한 STATE에 	  있더라도  INIT_STATE으로 돌아온다. 
-	  이 때, flags는 empty를 제외하고 모두 0이	  다.
-	  INIT_STATE은 fifo의 내부가 비어있는 상태이	  므로 circular queue와 같이 동작하는 synch	  ronous의 head와 tail도 각각 0의 값을 가진	  다. 내부 포인터가 초기화됨으로 empty는 1	  로 활성화된다. read operation이 요청되면 	  fifo_INIT_READ_ERR_STATE 으로 분기한다. 	   write operation이 요청되면 fifo_WRITE_STA	  TE 으로 분기한다. 그 외의 경우에는 fifo_	  NOP_STATE 으로 분기한다. 
-
+###### - fifo_INIT_STATE 은 가장 첫 번째 STATE이다. 만약 reset_n의 값이 0이면 어떠한 STATE에 있더라도  INIT_STATE으로 돌아온다. 이때, flags는 empty를 제외하고 모두 0이다. INIT_STATE은 fifo의 내부가 비어있는 상태이므로 circular queue와 같이 동작하는 synchronous의 head와 tail도 각각 0의 값을 가진다. 내부 포인터가 초기화됨으로 empty는 1로 활성화된다. read operation이 요청되면 fifo_INIT_READ_ERR_STATE으로 분기한다. write operation이 요청되면 fifo_WRITE_STATE로 분기한다. 그 외의 경우에는 fifo_NOP_STATE 으로 분기한다. 
 <br>
 ###### <b>- 6-1-2-2. fifo_INIT_READ_ERR_STATE</b>
-###### - flags는 empty와 rd_err는 1이고 나머지는 0	  이다.
-
-###### - read operation이 요청되면  fifo_INIT_READ_	  ERR_STATE 에 머문다. write operation이 요	  청되면 fifo_WRITE_STATE 으로 분기한다. 그 	  외의 경우에는 fifo_NOP_STATE 으로 분기한	  다.
-
+###### - flags는 empty와 rd_err는 1이고 나머지는 0이다.
+###### - read operation이 요청되면  fifo_INIT_READ_ERR_STATE에 머문다. write operation이 요청되면 fifo_WRITE_STATE 으로 분기한다. 그외의 경우에는 fifo_NOP_STATE 으로 분기한다.
 <br>
 ###### <b>- 6-1-2-3. fifo_WRITE_STATE</b>
-###### - flags는 empty = 0, wr_ack = 1, wr_err = 0, 	  rd_ack = 0, rd_err = 0 이고 현재 data_cou
-	  nt가 7개이면 full = 1로 출력하고 7개가 아	  니면 full = 0으로 출력한다.
-
-###### - data_count가 7인데 write operation이 요청	  되면 fifo_FULL_STATE로 분기하고 7이 아니	  면 계속 fifo_WRITE_STATE에 머문다.
-
-###### - read operation이 요청되면 fifo_READ_STATE	  으로 분기한다.
-
-###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기	  한다. 
-
+###### - flags는 empty = 0, wr_ack = 1, wr_err = 0, rd_ack = 0, rd_err = 0 이고 현재 data_count가 7개이면 full = 1로 출력하고 7개가 아니면 full = 0으로 출력한다.
+###### - data_count가 7인데 write operation이 요청되면 fifo_FULL_STATE로 분기하고 7이 아니면 계속 fifo_WRITE_STATE에 머문다.
+###### - read operation이 요청되면 fifo_READ_STATE로 분기한다.
+###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기한다. 
 <br>
 ###### <b>- 6-1-2-4. fifo_FULL_STATE</b>
-###### - flags는 full과 wr_ack는 1을 출력하고 나머지	  는 0을 출력한다.
-
-###### - write operation이 요청되면 fifo_WRITE_ERR	  _STATE으로 분기한다.
-
-###### - read operation이 요청되면 fifo_READ_STATE	  으로 분기한다.
-
-###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기	  한다.
-
+###### - flags는 full과 wr_ack는 1을 출력하고 나머지는 0을 출력한다.
+###### - write operation이 요청되면 fifo_WRITE_ERR_STATE로 분기한다.
+###### - read operation이 요청되면 fifo_READ_STATE로 분기한다.
+###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기한다.
 <br>
 ###### <b>- 6-1-2-5. fifo_WRITE_ERR_STATE</b>
-###### - flags는 full과 wr_err는 1을 출력하고 나머지	  는 0을 출력한다.
-
-###### - write operation이 요청되면 fifo_WRITE_ERR	  _STATE으로 분기한다.
-
-###### - read operation이 요청되면 fifo_READ_STATE	  으로 분기한다.
-
-###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기	  한다.
-
+###### - flags는 full과 wr_err는 1을 출력하고 나머지는 0을 출력한다.
+###### - write operation이 요청되면 fifo_WRITE_ERR_STATE로 분기한다.
+###### - read operation이 요청되면 fifo_READ_STATE로 분기한다.
+###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기한다.
 <br>
 ###### <b>- 6-1-2-6. fifo_READ_STATE</b>
-###### - data_count가 0이면 empty는 1을 출력하고 	  0이 아니면 empty는 0을 출력한다. 나머지 	  flags중 rd_ack만 1을 출력하고 나머지는 0을 	  출력한다.
-
-###### - write operation이 요청되면 fifo_WRITE_STA	  TE 으로 분기한다.
-
-###### - read operation이 요청되면 data_count가 1	  일 경우, fifo_EMPTY_STATE 으로 분기하고 1	  이 아닐 경우, fifo_READ_STATE 에 머문다.
-
-###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기	  한다.
-
+###### - data_count가 0이면 empty는 1을 출력하고 0이 아니면 empty는 0을 출력한다. 나머지 flags 중 rd_ack만 1을 출력하고 나머지는 0을 출력한다.
+###### - write operation이 요청되면 fifo_WRITE_STATE로 분기한다.
+###### - read operation이 요청되면 data_count가 1일 경우, fifo_EMPTY_STATE 으로 분기하고 1이 아닐 경우, fifo_READ_STATE에 머문다.
+###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기한다.
 <br>
 ###### <b>- 6-1-2-7. fifo_EMPTY_STATE</b>
-###### - flags는 empty와 rd_ack는 1을 출력하고 나	  머지는 0을 출력한다.	
-
-###### - write operation이 요청되면 fifo_WRITE_STA	  TE 으로 분기한다.
-
-###### - read operation이 요청되면 fifo_READ_ERR	  _STATE 으로 분기한다.
-
-###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기	  한다.
-
+###### - flags는 empty와 rd_ack는 1을 출력하고 나머지는 0을 출력한다.	
+###### - write operation이 요청되면 fifo_WRITE_STATE로 분기한다.
+###### - read operation이 요청되면 fifo_READ_ERR_STATE로 분기한다.
+###### - 그 외의 경우에는 fifo_NOP_STATE로 분기한다.
 <br>
 ###### <b>- 6-1-2-8. fifo_READ_ERR_STATE</b>
-###### - flags는 empty와 rd_err는 1을 출력하고 나	  머지는 0을 출력한다.
-
-###### - write operation이 요청되면 fifo_WRITE_STA	  TE 으로 분기한다.
-
-###### - read operation이 요청되면 fifo_READ_ERR	  _STATE 에 머문다.
-
-###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기	  한다.
-
+###### - flags는 empty와 rd_err는 1을 출력하고 나머지는 0을 출력한다.
+###### - write operation이 요청되면 fifo_WRITE_STATE로 분기한다.
+###### - read operation이 요청되면 fifo_READ_ERR_STATE에 머문다.
+###### - 그 외의 경우에는 fifo_NOP_STATE로 분기한다.
 <br>
 ###### <b>- 6-1-2-9. fifo_NOP_STATE</b>
-###### - 만약 data_count가 8이면 full = 1, empty = 	  0이다. 만약 data_count가 0이면 full = 0, 	  empty = 1이다. 그 외의 경우에 full 과 em	  pty는 모두 0이다. 나머지 flags들은 모두 0	  을 출력한다.
-
-###### - write operation이 요청되었을 때, data_cou	  nt가 7이면 fifo_FULL_STATE 으로 분기하고 	  full == 1이면 fifo_WRITE_ERR_STATE 으로 
-	  분기하며 data_count가 7이 아니거나 full 	   == 0이면 fifo_WRITE_STATE 으로 분기한	   다.
-
-###### - read operation이 요청되었을 때, data_count	  가 1이면 fifo_EMPTY_STATE 으로 분기하고 	  empty == 1이면 fifo_READ_ERR_STATE 으로 	  분기하며 data_count가 1이 아니거나 empty 	  == 0이면 fifo_READ_STATE 으로 분기한다.
-###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기	  한다.
-
+###### - 만약 data_count가 8이면 full = 1, empty = 0이다. 만약 data_count가 0이면 full = 0, empty = 1 이다. 그외의 경우에 full 과 empty는 모두 0이다. 나머지 flags들은 모두 0을 출력한다.
+###### - write operation이 요청되었을 때, data_count가 7이면 fifo_FULL_STATE 으로 분기하고 full == 1이면 fifo_WRITE_ERR_STATE로 분기하며 data_count가 7이 아니거나 full == 0이면 fifo_WRITE_STATE 으로 분기한다.
+###### - read operation이 요청되었을 때, data_count가 1이면 fifo_EMPTY_STATE 으로 분기하고 empty == 1이면 fifo_READ_ERR_STATE로 분기하며 data_count가 1이 아니거나 empty == 0이면 fifo_READ_STATE 으로 분기한다.
+###### - 그 외의 경우에는 fifo_NOP_STATE 으로 분기한다.
 <br>
 ##### 6-1-3. 'fifo' output port 소개
-###### - output port에는 dout, data_count와 status 	  flags인 full 과 empty 그리고 Handshake 	  signals인 wr_ack, wr_err, rd_ack, rd_err가 있	  다.
-
-###### - dout은 read operation이 요청되고 fifo의 내부가 	  비어있지 않은 상태일 때 출력한다.
-
-###### - data_count는 현재 fifo에 저장된 data의 수를 알	  려준다.
-
-###### - status flag인 full 은 현재 fifo에 8개의 data가 저	  장되어 있을 때 1이 된다. (이번 프로젝트에서 한 	  개의 fifo가 저장할 수 있는 data의 수는 8개이다.
-
-###### - status flag인 empty는 현재 fifo에 저장된 	  data의 수가 0일 때 1이 된다.
-
-###### - handshake signal인 wr_ack는 write operati	  on 요청이 들어와서 해당 fifo에 data가 제대	  로 쓰여지면 1이 된다. 
-
-###### - handshake signal인 wr_err는 더 이상 해당 	  fifo에 저장할 공간이 없음(data_count == 8, 	  full == 1 로 내부가 꽉 찬 상태)에도 불구하	  고 write operation을 요청할 때만 1이 된다.
-
-###### - handshake signal인 rd_ack는 read operatio	  n 요청이 들어와서 해당 fifo에 저장된 값이 	  output port인 dout으로 출력이 잘 되었을 	  때 1이 된다.
-
-###### - handshake signal인 rd_err는 해당 fifo에 저	  장된 data가 없어 비어있는 상태임에도 불구	  하고 read operation을 요청했을 때만 1이 	  된다.
-
+###### - output port에는 dout, data_count와 status flags인 full 과 empty 그리고 Handshake signals인 wr_ack, wr_err, rd_ack, rd_err가 있다.
+###### - dout은 read operation이 요청되고 fifo의 내부가 비어있지 않은 상태일 때 출력한다.
+###### - data_count는 현재 fifo에 저장된 data의 수를 알려준다.
+###### - status flag인 full 은 현재 fifo에 8개의 data가 저장되어 있을 때 1이 된다. (이번 프로젝트에서 한 개의 fifo가 저장할 수 있는 data의 수는 8개이다.
+###### - status flag인 empty는 현재 fifo에 저장된 data의 수가 0일 때 1이 된다.
+###### - handshake signal인 wr_ack는 write operation 요청이 들어와서 해당 fifo에 data가 제대로 쓰여지면 1이 된다. 
+###### - handshake signal인 wr_err는 더 이상 해당 fifo에 저장할 공간이 없음(data_count == 8, full == 1 로 내부가 꽉 찬 상태)에도 불구하고 write operation을 요청할 때만 1이 된다.
+###### - handshake signal인 rd_ack는 read operation 요청이 들어와서 해당 fifo에 저장된 값이 output port인 dout으로 출력이 잘 되었을 때 1이 된다.
+###### - handshake signal인 rd_err는 해당 fifo에 저장된 data가 없어 비어있는 상태임에도 불구하고 read operation을 요청했을 때만 1이 된다.
 <br>
 <br>
 #### 6-2. fifo-top
-###### - (1-9. Verilog로 구현한 FIFO_TOP 	  내부 회로 구성 화면 1. - WRITE OPERAT	  ION 요청 시)와 (1-10. Verilog로 구	  현한 FIFO_TOP 내부 회로 구성 화면 2. - 	  READ OPERATION 요청 시) 참고.
-
+###### - (1-9. Verilog로 구현한 FIFO_TOP 내부 회로 구성 화면 1. - WRITE OPERAT	  ION 요청 시)와 (1-10. Verilog로 구현한 FIFO_TOP 내부회로 구성 화면 2. - READ OPERATION 요청 시) 참고.
 <br>
 ##### 6-2-1. 구현한 내부 module 소개
-###### - 최상위 module 이름은 specification에서 주	  어진대로 'fifo_top'이다.
-
-###### - 하위 module은 'decoder', '_andcn', '_andcn4	  ', '_andcn8', 'cnt_mx2', 'ot_mx2', 'mx2'이다.
-
-###### - 이번 프로젝트에서 회로 구성능력과 설계 능	  력을 향상 시키기위해 fifo_top을 structure한 	  형태로 구성해 보았다. (always문을 거의 사	  용하지 않고 구현하도록 노력해보았다.) and 	  gate와 multiplexer를 사용하여 구현하였다.
-
+###### - 최상위 module 이름은 specification에서 주어진대로 'fifo_top'이다.
+###### - 하위 module은 'decoder', '_andcn', '_andcn4', '_andcn8', 'cnt_mx2', 'ot_mx2', 'mx2'이다.
+###### - 이번 프로젝트에서 회로 구성능력과 설계 능력을 향상 시키기위해 fifo_top을 structure한 형태로 구성해 보았다. (always문을 거의 사용하지 않고 구현하도록 노력하였다.) and gate와 multiplexer를 사용하여 구현하였다.
 <br>
 ##### 6-2-2. 구현한 회로 설명
-###### - wr이 1이면 write operation을 수행하고 wr	  이 0이면 read operation을 수행한다. 여기	  서 중요한 점은 input port인 address[7:0]의 	  상위 4bits의 값이 1이면 fifo_top이 선택된 것이고 sel이 1이 되는데, sel의 값이 1일 때	 만 요청된 write operation과 read operation	 을 수행한다. 이와 같은 동작을 4개의 1bit크	  기의 Multiplexer를 통해 구현하였다. 일단 w	  r이 1이면 U00_read_mx2에서 output 으로 0	  이 출력되고 U00_sel_mx2에서 sel의 값이 1	  이더라도 read operation을 수행하지 않는다. 	  또한 wr이 1이면 U11_write_mx2에서 output 	 으로 1이 출력되고 U11_sel_mx2에서 입력으	  로 들어오는 sel의 값이 1이면 write operati	  on을 수행한다.
-	   wr이 0이면 U00_read_mx2에서 output으로 	  1이 출력되고 U00_sel_mx2에서 sel의 값이 1	  이면 read operation을 수행한다. 또한 wr이 	  0이면 U11_write_mx2에서 output으로 0이 	  출력되고 U11_sel_mx2에서 입력으로 들어오	  는 sel의 값이 1이더라도 write operation을 	  수행하지 않는다.
-
-
-###### - 총 4개의 fifo가 fifo_top안에 존재한다. 각각	  의 fifo의 주소를 살펴보면 'U0_fifo' 는 	     	  8'h11, 'U1_fifo'는 8'h12, 'U2_fifo'는 8'h13, 	  'U3_fifo'는 8‘h14 이다.
-
-###### - Specification에서 주어진 조건과 같이 하위 	  4bits만을 해독하여 4개의 fifo 중 한 개를 	  선택하여 write나 read를 수행한다. 이 조건	  을 만족시키기 위해서  'U1_rd_and‘ ~ 'U4	  _rd_and‘ 와 'U1_wr_and' ~ 'U4_wr_and' 의 	  이름을 가진 8개의 and gate를 사용하였다. 	  입력으로 들어오는 주소(address)와 wr의 값	  에 따라 8 개의 and gate 중 한 개의 gate 	  출력 값이 1이 되어 요청된 operation을 수	  행한다. (그림 (1-9. Verilog로 구현한 FIFO_T	  OP 내부 회로 구성 화면 1. - WRITE OPERA	  TION 요청 시) 참고.)
-
-###### - read operation이 요청되었을 때에 대해 설	  명하겠다. 일단, next_address 레지스터는 클	  록이 상승에지일 때 입력으로 들어오는 주소	  를 값으로 갖는다. 이 next_address의 하위 	  4bits 값에 따라 4개의 fifo 중 한 개가 선택	  이 되거나 아무것도 선택이 되지 않도록 설	  계하였다. 만약 next_address 레지스터의 하	  위 4bits 값이 1이면 'U0_fifo' 를 선택하고 2	  이면 'U1_fifo' 를 선택하고 3이면 'U2_fifo' 	  를 선택하고 4이면 'U3_fifo' 를 선택하여 해당 fifo의 dout과 data_count, status flags, 	  handshake signals를 fifo_top의 output인 	   dout, fifo_cnt, fifo_flag[0]~fifo_flag[5]를 통	   해 출력된다.
-	   여기서 중요한 점은 16-to-1 multiplexer를 	  사용하여 하위 4bits의 모든 경우의 수에 대	  해 처리했다는 점이다. 만약, address의 하위 	  4bits 값이 1~4 가 아닌 0 또는 5 ~ 15의 	  값을 가질 경우, output 인 dout, fifo_cnt, 	  fifo_flag[0]~fifo_flag[5]의 값은 모두 0이다.
-	   ※ 주의할 점은 read operation이 요청되었	  을 때 입력으로 들어온 address의 하위 4bi	  ts를 해독하여 output을 결정하므로 만약 상	  위 4bits의 값이 1이 아닌 다른 값을 가질 	  때에도 마치 fifo가 선택된 것처럼 동작할 수 	  있다는 것이다. 이런 점을 방지하기 위해 	  address 하위 4bits에 의해 결정된 output값	  들(  'mx_out_U3_w1', mx_cnt_U3_w1, mx_ful	  _U3_w1, mx_emp_U3_w1, mx_wr_ack_U3_w1, 	  mx_wr_err_U3_w1, mx_rd_ack_U3_w1, mx_rd_	  err_U3_w1 ) 을 현재 sel과 and 연산 시켜주	  어서 sel이 1이면 해당 값을 출력하고 sel이 	  0이면 모든 output의 값은 0으로 출력하도록 	  설계하였다.
+###### - wr이 1이면 write operation을 수행하고 wr이 0이면 read operation을 수행한다. 중요한 점은 input port인 address[7:0]의 상위 4bits의 값이 1이면 fifo_top이 선택된 것이고 sel이 1이 되는데, sel의 값이 1일 때만 요청된 write operation과 read operation을 수행한다. 이와 같은 동작을 4개의 1bit 크기의 Multiplexer를 통해 구현하였다. 일단 wr이 1이면 U00_read_mx2에서 output 으로 0이 출력되고 U00_sel_mx2에서 sel의 값이 1이더라도 read operation을 수행하지 않는다. 또한 wr이 1이면 U11_write_mx2에서 output으로 1이 출력되고 U11_sel_mx2에서 입력으로 들어오는 sel의 값이 1이면 write operation을 수행한다. wr이 0이면 U00_read_mx2에서 output으로 1이 출력되고 U00_sel_mx2에서 sel의 값이 1이면 read operation을 수행한다. 또한 wr이 0이면 U11_write_mx2에서 output으로 0이 출력되고 U11_sel_mx2에서 입력으로 들어오는 sel의 값이 1이더라도 write operation을 수행하지 않는다.
+###### - 총 4개의 fifo가 fifo_top안에 존재한다. 각각의 fifo의 주소를 살펴보면 'U0_fifo'는 8'h11, 'U1_fifo'는 8'h12, 'U2_fifo'는 8'h13, 'U3_fifo'는 8‘h14 이다.
+###### - Specification에서 주어진 조건과 같이 하위 4bits만을 해독하여 4개의 fifo 중 한 개를 선택하여 write나 read를 수행한다. 이 조건을 만족시키기 위해서  'U1_rd_and‘ ~ 'U4_rd_and‘ 와 'U1_wr_and' ~ 'U4_wr_and' 의 이름을 가진 8개의 and gate를 사용하였다. 입력으로 들어오는 주소(address)와 wr의 값에 따라 8 개의 and gate 중 한 개의 gate 출력 값이 1이 되어 요청된 operation을 수행한다. (그림 (1-9. Verilog로 구현한 FIFO_TOP 내부 회로 구성 화면 1. - WRITE OPERATION 요청 시) 참고.)
+###### - read operation이 요청되었을 때에 대해 설명하겠다. 일단, next_address 레지스터는 클록이 상승에지일 때 입력으로 들어오는 주소를 값으로 갖는다. 이 next_address의 하위 4bits 값에 따라 4개의 fifo 중 한 개가 선택이 되거나 아무것도 선택이 되지 않도록 설계하였다. 만약 next_address 레지스터의 하위 4bits 값이 1이면 'U0_fifo' 를 선택하고 2이면 'U1_fifo' 를 선택하고 3이면 'U2_fifo'를 선택하고 4이면 'U3_fifo'를 선택하여 해당 fifo의 dout과 data_count, status flags, handshake signals를 fifo_top의 output인 dout, fifo_cnt, fifo_flag[0]~fifo_flag[5]를 통해 출력된다. 중요한 점은 16-to-1 multiplexer를 사용하여 하위 4bits의 모든 경우의 수에 대해 처리했다는 점이다. 만약, address의 하위 4bits 값이 1~4 가 아닌 0 또는 5 ~ 15의 값을 가질 경우, output 인 dout, fifo_cnt, fifo_flag[0]~fifo_flag[5]의 값은 모두 0이다. 주의할 점은 read operation이 요청되었을 때 입력으로 들어온 address의 하위 4bits를 해독하여 output을 결정하므로 만약 상위 4bits의 값이 1이 아닌 다른 값을 가질 때에도 마치 fifo가 선택된 것처럼 동작할 수 있다는 것이다. 이런 점을 방지하기 위해 address 하위 4bits에 의해 결정된 output값들(  'mx_out_U3_w1', mx_cnt_U3_w1, mx_ful_U3_w1, mx_emp_U3_w1, mx_wr_ack_U3_w1, mx_wr_err_U3_w1, mx_rd_ack_U3_w1, mx_rd_err_U3_w1 ) 을 현재 sel과 and 연산 시켜주어서 sel이 1이면 해당 값을 출력하고 sel이 0이면 모든 output의 값은 0으로 출력하도록 설계하였다.
 <br>
 <br>
 #### 6-3. timer
-###### - (1-3. State Transition Diagram - TIM	  ER - module이름 : timer_reg     - CNT_	  EN_STATE), (1-4. State Transition Diagram - 	  TIMER - module이름 : timer_reg     - INT	  RRT_STATE), (1-5. State Transition Diagram 	  - TIMER - module이름 : timer_master     - 	  master_state)참고.
-
+###### - (1-3. State Transition Diagram - TIMER - module이름 : timer_reg - CNT_EN_STATE), (1-4. State Transition Diagram - TIMER - module이름 : timer_reg - INTRRT_STATE), (1-5. State Transition Diagram - TIMER - module이름 : timer_master - master_state)참고.
 <br>
 ##### 6-3-1. 구현한 내부 module 소개
-###### - 최상위 module 이름은 specification에서 주	  어진대로 'timer'이다.
-
-###### - 하위 module은 'timer_reg‘, ’timer_master‘      	  ’timer_counter‘, ’timer_reg_mx2‘가 있다.
-	  총 4개의 State Transition Diagram을 사용하	  여 구현하였고 module 'timer_reg' 에서 2개, 	  'timer_master‘에서 1개, 'timer_counter'에서 	  1개의 moore FSM으로 설계하였다.
-
+###### - 최상위 module 이름은 specification에서 주어진대로 'timer'이다.
+###### - 하위 module은 'timer_reg', 'timer_master', 'timer_counter', 'timer_reg_mx2'가 있다. 총 4개의 State Transition Diagram을 사용하여 구현하였고 module 'timer_reg' 에서 2개, 'timer_master‘에서 1개, 'timer_counter'에서 1개의 moore FSM으로 설계하였다.
 <br>
 ###### <b>6-3-1-1. module 'timer_reg'</b>
-###### - module 'timer_reg'에서 총 2개의 FSM을 사	  용하였다.
-
-###### - CNT_EN_STATE과 INTRRT_STATE이 해당 2개	  의 FSM이다.
-
-###### - CNT_EN_STATE의 초기 STATE은 CNT_EN_ID	  LE_STATE이다.
-
-###### - CNT_EN_IDLE_STATE에서 'timer_master‘ 의 	  master_state이 IDLE 상태이고 'timer_coun	  ter' 의 counter_state이 IDLE 상태일 때 CN	  T_EN 레지스터에 0이 쓰이면 CNT_EN_READ	  _REQ 으로 분기한다.
-
-###### - CNT_EN_READ_REQ에서는 read_req 를 1cyc	  le 동안만 1로 유지하고 다시 CNT_EN_IDLE 	  STATE으로 분기한다. read_req가 1이 됨으로	  써 module 'timer_master'에서 FSM에 해당	  하는 master_state이 동작할 수 있도록 한다.
-
-###### - INTRRT_STATE의 초기 STATE은 INTRRT_IDLE	  _STATE 이다. INTRRT_IDLE_STATE에서 outpu	  t port인 interrupt가 1일 때, INTRRUPT 레지	  스터에 0이 쓰이면 interrupt가 0으로 클리어 	  되는 조건을 충족함으로써 INTRRT_CLEAR_ST	  ATE으로 분기한다.
-
-###### - INTRRT_CLEAR_STATE에서 1cycle동안 output 	  port인 int_clear의 값을 1로 유지한다. int_	  clear의 값이 1이 됨에 따라 module 'timer_	  counter'의 counter_state에서 CNT_CON 레	  지스터의 값에 의해 카운터를 계속할지 아니	  면 그만할지 결정한다.
-
-###### - timer가 slave일 때 외부에서 timer의 regi	  ster 값을 읽도록 명령하는 경우가 있다. 이 	  때는 S_sel이 1이고 S_wr이 1일 경우다. 만약	  INTRRUPT 레지스터의 값을 read 하는 명령	  이면 interrupt가 1이면 S_dout으로 1을 출력	  하고 0이면 S_dout으로 0을 출력한다.
-	   만약, CNT_CON 레지스터 값을 read하는 	  명령이면 CNT_CON의 값이 1이면 S_dout으	  로 1을 출력하고 0이면 S_dout으로 0을 출	  력한다.
-	   만약, LOAD_ADDRESS 레지스터 값을 read	  하는 명령이면 현재 저장되어있는 LOAD_	   ADDRESS 레지스터 값을 S_dout으로 출력	   한다.
-
-
-###### - 만약, LOAD_VALUE 또는 COUNT_VALUE 값	  을 read하는 명령이면 각각 현재 저장되어있	  는 LOAD_VALUE 레지스터 또는 COUNT_V	  ALUE 레지스터에 저장된 값을 S_dout으로 	  출력한다.
-
-###### - 만약, 현재 상태가 무엇인지 read하는 명령이	  면 현재 state상태가 저장된 CUR_STATE와 	  같은 값을 S_dout으로 출력한다. 이 때 CU	  R_STATE은 timer_master의 master_state과 	  counter_state의 상태를 동시에 갖는다. CU	  R_STATE의 상위 3bits는 항상 0으로써 사용	  하지 않고 0~1 bit는 counter_state을 나타내	  고 2~4 bit는 master_state을 나타낸다.
-
-###### - 만약, CNT_EN 의 상태를 read하는 명령이면 	  S_dout으로 0을 출력한다. 그 외의 경우에는 	  무조건 S_dout은 0을 출력한다.
-
-###### - module 'timer_counter'의 COUNT_VALUE가 	  0이면 그 다음 cycle에 interrupt는 1로 발생	  한다. 이와 같이 발생한 interrupt는 0으로 	  clear 해주기 전까지 유지된다.
-
+###### - module 'timer_reg'에서 총 2개의 FSM을 사용하였다.
+###### - CNT_EN_STATE과 INTRRT_STATE이 해당 2개의 FSM이다.
+###### - CNT_EN_STATE의 초기 STATE은 CNT_EN_IDLE_STATE이다.
+###### - CNT_EN_IDLE_STATE에서 'timer_master'의 master_state이 IDLE 상태이고 'timer_counter' 의 counter_state이 IDLE 상태일 때 CNT_EN 레지스터에 0이 쓰이면 CNT_EN_READ_REQ로 분기한다.
+###### - CNT_EN_READ_REQ에서는 read_req 를 1cycle 동안만 1로 유지하고 다시 CNT_EN_IDLE STATE로 분기한다. read_req가 1이 됨으로써 module 'timer_master'에서 FSM에 해당하는 master_state이 동작할 수 있도록 한다.
+###### - INTRRT_STATE의 초기 STATE은 INTRRT_IDLE_STATE 이다. INTRRT_IDLE_STATE에서 output port인 interrupt가 1일 때, INTRRUPT 레지스터에 0이 쓰이면 interrupt가 0으로 클리어 되는 조건을 충족함으로써 INTRRT_CLEAR_STATE으로 분기한다.
+###### - INTRRT_CLEAR_STATE에서 1cycle동안 output port인 int_clear의 값을 1로 유지한다. int_clear의 값이 1이 됨에 따라 module 'timer_counter'의 counter_state에서 CNT_CON 레지스터의 값에 의해 카운터를 계속할지 아니면 그만할지 결정한다.
+###### - timer가 slave일 때 외부에서 timer의 register 값을 읽도록 명령하는 경우가 있다. 이때는 S_sel이 1이고 S_wr이 1일 경우다. 만약 INTRRUPT 레지스터의 값을 read 하는 명령이면 interrupt가 1이면 S_dout으로 1을 출력하고 0이면 S_dout으로 0을 출력한다. 만약, CNT_CON 레지스터 값을 read하는 명령이면 CNT_CON의 값이 1이면 S_dout으로 1을 출력하고 0이면 S_dout으로 0을 출력한다. 만약, LOAD_ADDRESS 레지스터 값을 read하는 명령이면 현재 저장되어있는 LOAD_ADDRESS 레지스터 값을 S_dout으로 출력한다.
+###### - 만약, LOAD_VALUE 또는 COUNT_VALUE 값을 read하는 명령이면 각각 현재 저장되어있는 LOAD_VALUE 레지스터 또는 COUNT_VALUE 레지스터에 저장된 값을 S_dout으로 출력한다.
+###### - 만약, 현재 상태가 무엇인지 read하는 명령이면 현재 state상태가 저장된 CUR_STATE와 같은 값을 S_dout으로 출력한다. 이때 CUR_STATE는 timer_master의 master_state와 counter_state의 상태를 동시에 갖는다. CUR_STATE의 상위 3bits는 항상 0으로써 사용하지 않고 0~1 bit는 counter_state을 나타내고 2~4 bit는 master_state을 나타낸다.
+###### - 만약, CNT_EN 의 상태를 read하는 명령이면 S_dout으로 0을 출력한다. 그 외의 경우에는 무조건 S_dout은 0을 출력한다.
+###### - module 'timer_counter'의 COUNT_VALUE가 0이면 그 다음 cycle에 interrupt는 1로 발생한다. 이와 같이 발생한 interrupt는 0으로 clear 해주기 전까지 유지된다.
 <br>
 ###### <b>6-3-1-2. module 'timer_master'</b>
-###### - module 'timer_reg'에서 1개의 FSM을 사용하	  였다. ( master_state )
-
-###### - master_state의 초기 상태는 master_IDLE_ST	  ATE이다.
-
+###### - module 'timer_reg'에서 1개의 FSM을 사용하였다. ( master_state )
+###### - master_state의 초기 상태는 master_IDLE_STATE이다.
 ###### -  LOAD_VALUE 레지스터가 존재한다.
-
-###### - module 'timer_reg'에서 read_req의 값으로 1	  을 보내주면 master_READ_REQ_STATE 으로 	  분기한다.
-
-###### - master_READ_REQ_STATE에서 M_req가 1이 	  됨으로써 bus에 Master request를 한다. 그	  에 대한 응답으로 bus에서 M_grant 1을 	  	  받으면 master_READ_GRA_STATE 로 분기한	  다. 그 외의 경우에는 그대로 master_READ	  _REQ_STATE에 머문다.
-
-###### - master_READ_GRA_STATE에서는 M_address	  의 값으로 LOAD_ADDDRESS의 값, M_wr의 	  값, M_dout의 값을 내보낸다. 그리고 mas	  ter_READ_DEL_STATE 으로 분기한다.
-
-###### - master_READ_DEL_STATE에서 M_req의 값으	  로 0을 갖는다. master_READ_GRA_STATE에	  서 요청한 주소에 저장된 data를 input port	  인 M_din으로 받는다. 이 때 M_din을 통해 들어오는 data는 LOAD_VALUE 레지스터에 	  저장된다. (reset_n이 작동하거나 그 다음 	  data가 저장되기 전까지 계속 유지) 그리고 	  master_CNT_EN_STATE으로 분기한다.
-###### - master_CNT_EN_STATE에서 내부 signal인 	  CNT_EN을 1로 내보냄으로써 module 'timer_	  counter'에서 카운터를 할 수 있는 조건을 	  만들어준다. 
-
+###### - module 'timer_reg'에서 read_req의 값으로 1을 보내주면 master_READ_REQ_STATE 으로 분기한다.
+###### - master_READ_REQ_STATE에서 M_req가 1이 됨으로써 bus에 Master request를 한다. 그에 대한 응답으로 bus에서 M_grant 1을 받으면 master_READ_GRA_STATE 로 분기한	  다. 그 외의 경우에는 그대로 master_READ_REQ_STATE에 머문다.
+###### - master_READ_GRA_STATE에서는 M_address의 값으로 LOAD_ADDDRESS의 값, M_wr의 값, M_dout의 값을 내보낸다. 그리고 master_READ_DEL_STATE 으로 분기한다.
+###### - master_READ_DEL_STATE에서 M_req의 값으로 0을 갖는다. master_READ_GRA_STATE에서 요청한 주소에 저장된 data를 input port인 M_din으로 받는다. 이때 M_din을 통해 들어오는 data는 LOAD_VALUE 레지스터에 저장된다. (reset_n이 작동하거나 그 다음 data가 저장되기 전까지 계속 유지) 그리고 master_CNT_EN_STATE으로 분기한다.
+###### - master_CNT_EN_STATE에서 내부 signal인 CNT_EN을 1로 내보냄으로써 module 'timer_counter'에서 카운터를 할 수 있는 조건을 만들어준다. 
 <br>
 ###### <b>6-3-1-3. module 'timer_counter'</b>
-###### - module 'timer_counter'에서 1개의 FSM을 사	  용하였다. ( counter_state )
-
-###### - counter_state의 초기 상태는 counter_IDLE	  _STATE이다.
-
+###### - module 'timer_counter'에서 1개의 FSM을 사용하였다. ( counter_state )
+###### - counter_state의 초기 상태는 counter_IDLE_STATE이다.
 ###### - COUNT_VALUE 레지스터가 존재한다.
-
-###### - timer_master에서 들어오는 CNT_EN이 1이고 	  LOAD_VALUE의 값이 0이 아닐 때 counter 	  _state은 counter_IDLE_STATE에서 counter	   _COUNT_STATE으로 분기한다. 또한 	  	  counter_COUNT_STATE으로 분기할 때 COU	  NT_VALUE 레지스터에 LOAD_VALUE의 값이 	  저장된다.
-
-###### - counter_COUNT_STATE에서는 COUNT_VAL	  UE를 1씩 감소하며 카운트를 수행하고 COU	  NT_VALUE가 0이 되면 counter_INTRRUPT_	  STATE으로 분기한다. 
-
-###### - counter_INTRRUPT_STATE에서는 int_clear가 	  1이고 CNT_CON이 1이면 다시 counter_COU	  NT_STATE으로 분기하여 카운트를 재수행하	  고 만약 int_clear가 1이고 CNT_CON이 0이	  면 counter_IDLE_STATE으로 분기하여 대기한	  다. int_clear가 0일 경우에는 counter_INTR	  RUPT_STATE에 머문다.
-
-###### - 카운트가 끝난 후 COUNT_VALUE는 0을 유	  지한다.
-
-###### - interrupt를 clear한 후 CNT_CON의 값이 1로	  써 재 카운트를 수행한다면 COUNT_VALUE	  의 값은 이미 저장되어 있던 LOAD_VALUE의 	  값을 초기 값으로 받는다.
-
+###### - timer_master에서 들어오는 CNT_EN이 1이고 LOAD_VALUE의 값이 0이 아닐 때 counter_state는 counter_IDLE_STATE에서 counter_COUNT_STATE으로 분기한다. 또한 counter_COUNT_STATE으로 분기할 때 COUNT_VALUE 레지스터에 LOAD_VALUE의 값이 저장된다.
+###### - counter_COUNT_STATE에서는 COUNT_VALUE를 1씩 감소하며 카운트를 수행하고 COUNT_VALUE가 0이 되면 counter_INTRRUPT_STATE로 분기한다. 
+###### - counter_INTRRUPT_STATE에서는 int_clear가 1이고 CNT_CON이 1이면 다시 counter_COUNT_STATE으로 분기하여 카운트를 재수행하고 만약 int_clear가 1이고 CNT_CON이 0이면 counter_IDLE_STATE으로 분기하여 대기한다. int_clear가 0일 경우에는 counter_INTRRUPT_STATE에 머문다.
+###### - 카운트가 끝난 후 COUNT_VALUE는 0을 유지한다.
+###### - interrupt를 clear한 후 CNT_CON의 값이 1로써 재카운트를 수행한다면 COUNT_VALUE 값은 이미 저장되어 있던 LOAD_VALUE 값을 초기 값으로 받는다.
 <br>
 <br>
 #### 6.4 bus
-###### - 1-6. State Transition Diagram - TIM	ER - module이름 : timer_counter     - coun	ter_state 참고.
-
+###### - 1-6. State Transition Diagram - TIMER - module이름 : timer_counter - counter_state 참고.
 <br>
 ##### 6-4-1. 구현한 내부 module 소개
-###### - 최상위 module 이름은 specification에서 주	  어진대로 'bus'이다.
-
-###### - 하위 module은 'Arbitrator', 'Address_dec		  oder', 'mx2_addr', 'mx2_bus' 가 있다.
-
-###### - module 'Arbitrator'에서는 1개의 State 		  Transiton Diagram이 존재한다.
-
-###### - Master 0는 testbench이고, Master 1은 		  timer이며, Slave 0는 fifo_top이고, Slave 1은 	  timer이다. 주소가 8'h10 ~ 8'h1f이면  fifo_	  top에 해당되고 8'h20 ~ 8'h2f이면 timer에 	  해당된다.
-
+###### - 최상위 module 이름은 specification에서 주어진대로 'bus'이다.
+###### - 하위 module은 'Arbitrator', 'Address_decoder', 'mx2_addr', 'mx2_bus' 가 있다.
+###### - module 'Arbitrator'에서는 1개의 State Transiton Diagram이 존재한다.
+###### - Master 0는 testbench이고, Master 1은 timer이며, Slave 0는 fifo_top이고, Slave 1은 timer이다. 주소가 8'h10 ~ 8'h1f이면  fifo_top에 해당되고 8'h20 ~ 8'h2f이면 timer에 해당된다.
 ###### - 하위 module 에 대해 설명하겠다.
-
 <br>
 ###### <b>6-4-1-1. module 'Arbitrator'</b>
-###### - module 'Arbitrator'에서 1개의 FSM을 사	  	 용하였다. ( Arbit_STATE )
-
-###### - 두 개의 STATE이 있는데 M0GRANT일 때 	  output으로 M0_grant = 1, M1_grant = 0으	  로 testbench가 grant를 갖고, 반대로 M1GR	  ANT일 때 output으로 M0_grant = 0, M1_G	  rant = 1로 timer가 grant를 갖는다.
-
+###### - module 'Arbitrator'에서 1개의 FSM을 사용하였다. ( Arbit_STATE )
+###### - 두 개의 STATE이 있는데 M0GRANT일 때 output으로 M0_grant = 1, M1_grant = 0으로 testbench가 grant를 갖고, 반대로 M1GRANT일 때 output으로 M0_grant = 0, M1_Grant = 1로 timer가 grant를 갖는다.
 ###### - Arbit_STATE의 초기 상태는 M0GRANT이다.
-
-###### - M1_req와 M0_req 모두 0일 때 기본적으로 	  M0GRANT 상태이다.
-
-###### - M1_req가 1이고 M0_req가 0일 때 M1GR	  ANT로 분기한다.
-
-###### - M1GRANT에서 M1_req가 1일 동안만 M1GR	  ANT에 머문다. 만약 현재 M1GRANT 상태에 	  M1_req가 1이라면 M0_req가 1로 변하더라	  도 grant는 timer가 계속 받는다.(M1GRANT 	  상태유지) M1_req가 0으로 바뀌면 M0GRA	  NT로 분기한다.
-
+###### - M1_req와 M0_req 모두 0일 때 기본적으로 M0GRANT 상태이다.
+###### - M1_req가 1이고 M0_req가 0일 때 M1GRANT로 분기한다.
+###### - M1GRANT에서 M1_req가 1일 동안만 M1GRANT에 머문다. 만약 현재 M1GRANT 상태에 M1_req가 1이라면 M0_req가 1로 변하더라도 grant는 timer가 계속 받는다.(M1GRANT 상태유지) M1_req가 0으로 바뀌면 M0GRANT로 분기한다.
 <br>
 ###### <b>6-4-1-2. module 'Address_decoder'</b>
-###### - M0_address와 M1_address 중 현재 grant를 	  받고 있는 곳의 address를 입력으로 받는다. 	  (M0_grant가 1이면 testbench에서 입력된 	  address를 입력으로 받고 M1_grant가 1이면 	  timer에서 M_address로 출력되는 주소를 입	  력으로 받는다.)
-
-###### - 입력으로 받는 address의 상위 4bits를 판별	  하여 상위 4bits의 값이 1이면 fifo_top을 선	  택하여 S0_sel = 1, S1_sel = 0으로 출력되	  고 address의 상위 4bits의 값이 2이면 timer	  를 선택하여 S0_sel = 0, S1_sel = 1로 출력	  한다.
-
+###### - M0_address와 M1_address 중 현재 grant를 받고 있는 곳의 address를 입력으로 받는다. (M0_grant가 1이면 testbench에서 입력된 address를 입력으로 받고 M1_grant가 1이면 timer에서 M_address로 출력되는 주소를 입력으로 받는다.)
+###### - 입력으로 받는 address의 상위 4bits를 판별하여 상위 4bits의 값이 1이면 fifo_top을 선택하여 S0_sel = 1, S1_sel = 0으로 출력되고 address의 상위 4bits의 값이 2이면 timer를 선택하여 S0_sel = 0, S1_sel = 1로 출력한다.
 <br>
 ##### 6-4-2. bus의 전체 동작에 관한 설명
 ###### - module ‘Arbitrator’에서 testbench가 grant를 	  받을지 timer가 grant를 받을지 결정한다.

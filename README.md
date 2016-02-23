@@ -230,7 +230,101 @@
 ###### - 해당 레지스터의 값을 읽을 수 밖에 없게 설정된 LOAD_VALUE register와 COUNT_VALUE register, CUR_STATE register에 write operation이 요청되면 timer는 이를 무시한다.
 ###### - Master interface를 통해 read한 값을 LOAD VALUE register에 저장하며 이 값을 계속 유지한다. (reset_n이 활성화될 때와 다시 Master interface를 통해 data를 read할 경우 제외.)
 ###### - COUNT_VALUE register는 reset_n이 되었을 경우 default value(0x00)을 가지며 count를 하고 있지 않을 때 0을 가진다.
-
-
-
+<br>
+<br>
+#### 5-4. bus
+###### 
+<br>
+##### 5-4-1. Introduction
+###### 
+<br>
+##### 5-4-2. Features
+###### 
+###### 
+###### 
+###### 
+###### 
+###### 
+###### 
+<br>
+##### 5-4-3. Functional Description
+###### 
+<br>
+##### 5-4-4. Additional Information
+###### 
+###### 
+<br>
+#### 5.5. top
+###### - ※pg10의 표 2-6. Input/Output Description 	(TOP) 참고
+<br>
+##### 5-5-1. Introduction
+###### - TOP은 FIFO TOP, TIMER, BUS를 instance 하	  여 연결한 component이다.
+<br>
+##### 5-5-2. Features
+###### 
+###### 
+###### 
+<br>
+##### 5-5-3. Additional Information
+###### 
+<br>
+<br>
+<br>
+### 6. Design details <br>
+#### 6-1. Synchronous fifo
+######
+<br>
+##### 6-1-1. 구현한 내부 module 소개
+######
+######
+######
+######
+######
+######
+<br>
+##### 6-1-2. fifo_STATE 소개
+###### <b>- 6-1-2-1. fifo_INIT_STATE</b>
+###### 
+<br>
+###### <b>- 6-1-2-2. fifo_INIT_READ_ERR_STATE</b>
+###### 
+###### 
+<br>
+###### <b>- 6-1-2-3. fifo_WRITE_STATE</b>
+###### 
+###### 
+###### 
+###### 
+<br>
+###### <b>- 6-1-2-4. fifo_FULL_STATE</b>
+###### 
+###### 
+###### 
+###### 
+<br>
+###### <b>- 6-1-2-5. fifo_WRITE_ERR_STATE</b>
+###### 
+###### 
+###### 
+###### 
+<br>
+###### <b>- 6-1-2-6. fifo_READ_STATE</b>
+###### 
+###### 
+###### 
+###### 
+<br>
+###### <b>- 6-1-2-7. fifo_EMPTY_STATE</b>
+###### 
+###### 
+###### 
+###### 
+<br>
+###### <b>- 6-1-2-8. fifo_READ_ERR_STATE</b>
+###### 
+###### 
+###### 
+<br>
+###### <b>- 6-1-2-9. fifo_NOP_STATE</b>
+<br>
 

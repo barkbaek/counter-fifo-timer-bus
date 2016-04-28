@@ -2,6 +2,8 @@
 #### <b>Language : Verilog</b> <br>
 <br>
 
+Writer : Pyong-Hwa, Baek
+
 ### 1. 그림 목차 <br>
 #### 1-1. Schedule <br>
 ![alt tag](http://res.cloudinary.com/remotecontrol/image/upload/v1456238171/img1_wun0na.png)
